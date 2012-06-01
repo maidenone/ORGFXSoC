@@ -1,0 +1,4 @@
+			Digilent Atlys Spartan-6 board build
+
+The building process for this board is identical to the ML501 build.
+See the project's main documentation in doc/ for information on the ML501 build.

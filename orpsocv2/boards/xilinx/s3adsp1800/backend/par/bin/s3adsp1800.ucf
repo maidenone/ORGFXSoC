@@ -1,0 +1,1385 @@
+############################################################################
+##    _____
+##   /     \
+##  /____   \____
+## / \===\   \==/
+##/___\===\___\/  AVNET Design Resource Center
+##     \======/         www.em.avnet.com/drc
+##      \====/          www.em.avnet.com/spartan3a-dsp
+##----------------------------------------------------------------
+##
+## Disclaimer:
+##    Avnet, Inc. makes no warranty for the use of this code or design.
+##    This code is provided  "As Is". Avnet, Inc assumes no responsibility for
+##    any errors, which may appear in this code, nor does it make a commitment
+##    to update the information contained herein. Avnet, Inc specifically
+##    disclaims any implied warranties of fitness for a particular purpose.
+##                     Copyright(c) 2007 Avnet, Inc.
+##                             All rights reserved.
+##
+############################################################################
+
+## Spartan-3A Specific constraints
+CONFIG VCCAUX=3.3;
+
+#### System level constraints
+
+# Net sys_clk_i LOC = "AE13" | IOSTANDARD = LVCMOS33 ;  # socket clock
+Net sys_clk_i LOC = "F13" | IOSTANDARD = LVCMOS33 ;  # 125 MHz clock
+# Net sys_clk_i LOC = "K14"  | IOSTANDARD = LVCMOS33 ;  # SMA clock
+
+Net rst_n_pad_i LOC="Y16" | IOSTANDARD = LVTTL;
+Net rst_n_pad_i TIG;
+#NET "mb_opb_OPB_Rst" TIG;
+
+#### Timing constraints
+
+Net sys_clk_i TNM_NET = sys_clk_i;
+TIMESPEC TS_sys_clk_i = PERIOD sys_clk_i 8000 ps; # 125MHz
+
+# Can't see any FB nets in DDR2 design from MIG - Julius
+#Net fpga_0_DDR_CLK_FB TNM_NET = fpga_0_DDR_CLK_FB;
+#TIMESPEC TS_fpga_0_DDR_CLK_FB = PERIOD fpga_0_DDR_CLK_FB 8000 ps; # 125MHz
+
+# Not using this clock - Julius
+#Net CLK_25_175MHZ TNM_NET = CLK_25_175MHZ;
+#TIMESPEC TS_CLK_25_175MHZ = PERIOD CLK_25_175MHZ 39700 ps; # 25.175MHz
+#INST "CLK_25_175MHZ_BUFGP/BUFG" LOC = "BUFGMUX_X3Y2";
+
+#### Module RS232 constraints
+
+Net uart0_srx_pad_i LOC="N21" | IOSTANDARD = LVTTL;
+Net uart0_stx_pad_o LOC="P22" | IOSTANDARD = LVTTL | DRIVE = 4 | SLEW = SLOW;
+
+#### Module LEDs_8Bit constraints
+
+#Net fpga_0_LEDs_8Bit_GPIO_d_out* TIG;
+Net gpio0_io[*] TIG;
+Net gpio0_io<0> LOC="D25" | IOSTANDARD = LVTTL | SLEW = QUIETIO | DRIVE = 4 ;
+Net gpio0_io<1> LOC="D24" | IOSTANDARD = LVTTL | SLEW = QUIETIO | DRIVE = 4 ;
+Net gpio0_io<2> LOC="G21" | IOSTANDARD = LVTTL | SLEW = QUIETIO | DRIVE = 4 ;
+Net gpio0_io<3> LOC="H20" | IOSTANDARD = LVTTL | SLEW = QUIETIO | DRIVE = 4 ;
+Net gpio0_io<4> LOC="K22" | IOSTANDARD = LVTTL | SLEW = QUIETIO | DRIVE = 4 ;
+Net gpio0_io<5> LOC="N19" | IOSTANDARD = LVTTL | SLEW = QUIETIO | DRIVE = 4 ;
+Net gpio0_io<6> LOC="P25" | IOSTANDARD = LVTTL | SLEW = QUIETIO | DRIVE = 4 ;
+Net gpio0_io<7> LOC="P18" | IOSTANDARD = LVTTL | SLEW = QUIETIO | DRIVE = 4 ;
+
+#### Module DIP_Switches_8Bit constraints
+
+#Net fpga_0_DIP_Switches_8Bit_GPIO_in* TIG;
+
+#Net gpio0_io<8> LOC="A23" | IOSTANDARD = LVTTL;
+#Net gpio0_io<9> LOC="A5"  | IOSTANDARD = LVTTL;
+#Net gpio0_io<10> LOC="B24" | IOSTANDARD = LVTTL;
+#Net gpio0_io<11> LOC="D19" | IOSTANDARD = LVTTL;
+#Net gpio0_io<12> LOC="D15" | IOSTANDARD = LVTTL;
+#Net gpio0_io<13> LOC="E9"  | IOSTANDARD = LVTTL;
+#Net gpio0_io<14> LOC="G16" | IOSTANDARD = LVTTL;
+#Net gpio0_io<15> LOC="A7"  | IOSTANDARD = LVTTL;
+
+#### Module Buttons_4Bit constraints
+
+#Net gpio0_io<16> LOC = "J17" | IOSTANDARD = LVTTL;
+#Net gpio0_io<17> LOC = "J15" | IOSTANDARD = LVTTL;
+#Net gpio0_io<18> LOC = "J13" | IOSTANDARD = LVTTL;
+#Net gpio0_io<19> LOC = "J10" | IOSTANDARD = LVTTL;
+
+# GPIO pads which can have I/O bufs - on J8 SysAce header
+Net gpio0_io<8>  LOC = "U18" | IOSTANDARD = LVTTL;
+Net gpio0_io<9>  LOC = "Y22" | IOSTANDARD = LVTTL;
+Net gpio0_io<10> LOC = "Y23" | IOSTANDARD = LVTTL;
+Net gpio0_io<11> LOC = "U21" | IOSTANDARD = LVTTL;
+Net gpio0_io<12> LOC = "T20" | IOSTANDARD = LVTTL;
+Net gpio0_io<13> LOC = "Y24" | IOSTANDARD = LVTTL;
+Net gpio0_io<14> LOC = "Y25" | IOSTANDARD = LVTTL;
+Net gpio0_io<15> LOC = "T18" | IOSTANDARD = LVTTL;
+Net gpio0_io<16> LOC = "T17" | IOSTANDARD = LVTTL;
+Net gpio0_io<17> LOC = "W23" | IOSTANDARD = LVTTL;
+Net gpio0_io<18> LOC = "V25" | IOSTANDARD = LVTTL;
+Net gpio0_io<19> LOC = "V22" | IOSTANDARD = LVTTL;
+Net gpio0_io<20> LOC = "V24" | IOSTANDARD = LVTTL;
+Net gpio0_io<21> LOC = "V23" | IOSTANDARD = LVTTL;
+Net gpio0_io<22> LOC = "AC26" | IOSTANDARD = LVTTL;
+Net gpio0_io<23> LOC = "AB26" | IOSTANDARD = LVTTL;
+
+
+#### Module DDR2_SDRAM_32Mx32 constraints
+
+##################################################################################################
+## Clock constraints                                                        
+##################################################################################################
+#NET "*/infrastructure_top0/sys_clk_ibuf" TNM_NET = "SYS_CLK";
+#TIMESPEC "TS_SYS_CLK" = PERIOD "SYS_CLK"  7.519000  ns HIGH 50 %;
+##################################################################################################
+
+##################################################################################################
+## These paths are constrained to get rid of unconstrained paths.
+##################################################################################################
+NET "*/infrastructure_top0/clk_dcm0/clk0dcm" TNM_NET = "clk0";
+#NET "xilinx_s3adsp_ddr2/xilinx_s3adsp_ddr2_if/s3adsp_ddr2/top_00/data_path0/dqs_delayed_col*" TNM_NET = "dqs_clk";
+NET "*/top_00/data_path0/dqs_delayed_col*" TNM_NET = "dqs_clk";
+TIMESPEC "TS_CLK" = FROM "clk0" TO "dqs_clk"  18 ns DATAPATHONLY;
+
+NET "*/infrastructure_top0/clk_dcm0/clk90dcm" TNM_NET = "clk90";
+TIMESPEC "TS_CLK90" = FROM "dqs_clk" TO "clk90" 18 ns DATAPATHONLY;
+TIMESPEC "TS_DQSCLK" = FROM "clk90" TO "dqs_clk" 18 ns DATAPATHONLY;
+
+#NET "*/top_00/data_path0/data_read_controller0/gen_wr_en*fifo*_wr_en_inst/clk" TNM_NET = "fifo_we_clk"; 
+NET "*/top_00/data_path0/dqs_delayed_col0[*]" TNM_NET = "fifo_we_clk"; 
+
+TIMESPEC "TS_WE_CLK" = FROM "dqs_clk" TO "fifo_we_clk"  5 ns DATAPATHONLY;
+
+#NET "*/top_00/data_path0/data_read_controller0/gen_wr_addr*fifo*_wr_addr_inst/clk" TNM_NET = "fifo_waddr_clk";
+
+NET "*/top_00/data_path0/dqs_delayed_col0[*]" TNM_NET = "fifo_waddr_clk";
+TIMESPEC "TS_WADDR_CLK" = FROM "dqs_clk" TO "fifo_waddr_clk"  5 ns DATAPATHONLY;
+
+NET "*/top_00/data_path0/dqs_delayed_col1[*]" TNM_NET = "fifo_waddr_clk1";
+TIMESPEC "TS_WADDR_CLK" = FROM "dqs_clk" TO "fifo_waddr_clk1"  5 ns DATAPATHONLY;
+
+#############################################################################################################
+## Calibration Circuit Constraints
+#############################################################################################################
+## Placement constraints for LUTS in tap delay ckt
+#############################################################################################################
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l0" RLOC=X0Y6;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l0" U_SET = delay_calibration_chain;
+ 
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l1" RLOC=X0Y6;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l1" U_SET = delay_calibration_chain;
+ 
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l2" RLOC=X0Y7;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l2" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l3" RLOC=X0Y7;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l3" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l4" RLOC=X1Y6;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l4" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l5" RLOC=X1Y6;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l5" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l6" RLOC=X1Y7;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l6" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l7" RLOC=X1Y7;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l7" U_SET = delay_calibration_chain;
+  
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l8" RLOC=X0Y4;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l8" U_SET = delay_calibration_chain;
+ 
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l9" RLOC=X0Y4;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l9" U_SET = delay_calibration_chain;
+ 
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l10" RLOC=X0Y5;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l10" U_SET = delay_calibration_chain;
+ 
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l11" RLOC=X0Y5;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l11" U_SET = delay_calibration_chain;
+ 
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l12" RLOC=X1Y4;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l12" U_SET = delay_calibration_chain;
+ 
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l13" RLOC=X1Y4;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l13" U_SET = delay_calibration_chain;
+ 
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l14" RLOC=X1Y5;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l14" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l15" RLOC=X1Y5;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l15" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l16" RLOC=X0Y2;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l16" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l17" RLOC=X0Y2;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l17" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l18" RLOC=X0Y3;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l18" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l19" RLOC=X0Y3;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l19" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l20" RLOC=X1Y2;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l20" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l21" RLOC=X1Y2;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l21" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l22" RLOC=X1Y3;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l22" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l23" RLOC=X1Y3;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l23" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l24" RLOC=X0Y0;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l24" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l25" RLOC=X0Y0;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l25" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l26" RLOC=X0Y1;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l26" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l27" RLOC=X0Y1;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l27" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l28" RLOC=X1Y0;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l28" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l29" RLOC=X1Y0;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l29" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l30" RLOC=X1Y1;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l30" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l31" RLOC=X1Y1;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l31" U_SET = delay_calibration_chain;
+
+#####################################################################################################
+# Placement constraints for first stage flops in tap delay ckt
+#####################################################################################################
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[0].r" RLOC=X0Y6;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[0].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[1].r" RLOC=X0Y6;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[1].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[2].r" RLOC=X0Y7;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[2].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[3].r" RLOC=X0Y7;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[3].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[4].r" RLOC=X1Y6;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[4].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[5].r" RLOC=X1Y6;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[5].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[6].r" RLOC=X1Y7;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[6].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[7].r" RLOC=X1Y7;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[7].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[8].r" RLOC=X0Y4;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[8].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[9].r" RLOC=X0Y4;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[9].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[10].r" RLOC=X0Y5;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[10].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[11].r" RLOC=X0Y5;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[11].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[12].r" RLOC=X1Y4;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[12].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[13].r" RLOC=X1Y4;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[13].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[14].r" RLOC=X1Y5;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[14].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[15].r" RLOC=X1Y5;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[15].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[16].r" RLOC=X0Y2;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[16].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[17].r" RLOC=X0Y2;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[17].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[18].r" RLOC=X0Y3;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[18].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[19].r" RLOC=X0Y3;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[19].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[20].r" RLOC=X1Y2;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[20].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[21].r" RLOC=X1Y2;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[21].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[22].r" RLOC=X1Y3;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[22].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[23].r" RLOC=X1Y3;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[23].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[24].r" RLOC=X0Y0;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[24].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[25].r" RLOC=X0Y0;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[25].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[26].r" RLOC=X0Y1;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[26].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[27].r" RLOC=X0Y1;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[27].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[28].r" RLOC=X1Y0;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[28].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[29].r" RLOC=X1Y0;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[29].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[30].r" RLOC=X1Y1;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[30].r" U_SET = delay_calibration_chain;
+
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[31].r" RLOC=X1Y1;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/gen_tap1[31].r" U_SET = delay_calibration_chain;
+
+#########################################################################################################
+## BEL constraints for LUTS in tap delay ckt
+#########################################################################################################
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l0"  BEL= G;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l1"  BEL= F;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l2"  BEL= G;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l3"  BEL= F;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l4"  BEL= G;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l5"  BEL= F;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l6"  BEL= G;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l7"  BEL= F;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l8"  BEL= G;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l9"  BEL= F;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l10" BEL= G;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l11" BEL= F;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l12" BEL= G;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l13" BEL= F;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l14" BEL= G;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l15" BEL= F;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l16" BEL= G;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l17" BEL= F;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l18" BEL= G;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l19" BEL= F;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l20" BEL= G;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l21" BEL= F;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l22" BEL= G;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l23" BEL= F;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l24" BEL= G;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l25" BEL= F;  
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l26" BEL= G;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l27" BEL= F;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l28" BEL= G;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l29" BEL= F;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l30" BEL= G;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l31" BEL= F;
+
+
+
+##################################################################################################
+## RLOC Origin constraint for LUT delay calibration chain.
+##################################################################################################
+INST "*/infrastructure_top0/cal_top0/tap_dly0/l0" RLOC_ORIGIN = X42Y154;
+
+##################################################################################################
+## Area Group Constraint For tap_dly and cal_ctl module.
+##################################################################################################
+INST "*/infrastructure_top0/cal_top0/cal_ctl0/*" AREA_GROUP = cal_ctl;
+INST "*/infrastructure_top0/cal_top0/tap_dly0/*" AREA_GROUP = cal_ctl;
+AREA_GROUP "cal_ctl" RANGE = SLICE_X42Y154:SLICE_X53Y167;
+AREA_GROUP "cal_ctl" GROUP = CLOSED;
+
+##################################################################################################
+
+#***********************************************************************************************************#
+#                        CONTROLLER 0                                                                  
+#***********************************************************************************************************#
+
+##################################################################################################
+# I/O STANDARDS                                                         
+##################################################################################################
+NET  "ddr2_dq[*]"                        IOSTANDARD = SSTL18_II;
+NET  "ddr2_a[*]"                         IOSTANDARD = SSTL18_II;
+NET  "ddr2_ba[*]"                        IOSTANDARD = SSTL18_II;
+NET  "ddr2_cke"                          IOSTANDARD = SSTL18_II;
+NET  "ddr2_cs_n"                         IOSTANDARD = SSTL18_II;
+NET  "ddr2_ras_n"                        IOSTANDARD = SSTL18_II;
+NET  "ddr2_cas_n"                        IOSTANDARD = SSTL18_II;
+NET  "ddr2_we_n"                         IOSTANDARD = SSTL18_II;
+NET  "ddr2_odt"                          IOSTANDARD = SSTL18_II;
+NET  "ddr2_dm[*]"                        IOSTANDARD = SSTL18_II;
+NET  "ddr2_rst_dqs_div_in"                    IOSTANDARD = SSTL18_II;
+NET  "ddr2_rst_dqs_div_out"                   IOSTANDARD = SSTL18_II;
+NET  "ddr2_dqs[*]"                       IOSTANDARD = DIFF_SSTL18_II;
+NET  "ddr2_dqs_n[*]"                     IOSTANDARD = DIFF_SSTL18_II;
+NET  "ddr2_ck[*]"                        IOSTANDARD = DIFF_SSTL18_II;
+NET  "ddr2_ck_n[*]"                      IOSTANDARD = DIFF_SSTL18_II;
+
+
+##################################################################################################
+# Pin Location Constraints for Clock,Masks, Address, and Controls 
+##################################################################################################
+# New UCF (from MIG, updated with correct pins from schematic)
+
+NET  "ddr2_ck[0]"    LOC = "N1" ;     #bank 3
+NET  "ddr2_ck_n[0]"    LOC = "N2" ;     #bank 3
+NET  "ddr2_ck[1]"    LOC = "N5" ;     #bank 3
+NET  "ddr2_ck_n[1]"    LOC = "N4" ;     #bank 3
+
+NET  "ddr2_dm[0]"    LOC = "V2" ;     #bank 3
+NET  "ddr2_dm[1]"    LOC = "V1" ;     #bank 3
+NET  "ddr2_dm[2]"    LOC = "R2" ;     #bank 3
+NET  "ddr2_dm[3]"    LOC = "M6" ;     #bank 3
+
+NET  "ddr2_a[12]"    LOC = "M4" ;     #bank 3
+NET  "ddr2_a[11]"    LOC = "M3" ;     #bank 3
+NET  "ddr2_a[10]"    LOC = "M8" ;     #bank 3
+NET  "ddr2_a[9]"     LOC = "M7" ;     #bank 3
+NET  "ddr2_a[8]"     LOC = "L4" ;     #bank 3
+NET  "ddr2_a[7]"     LOC = "L3" ;     #bank 3
+NET  "ddr2_a[6]"     LOC = "K3" ;     #bank 3
+NET  "ddr2_a[5]"     LOC = "K2" ;     #bank 3
+NET  "ddr2_a[4]"     LOC = "K5" ;     #bank 3
+NET  "ddr2_a[3]"     LOC = "K4" ;     #bank 3
+NET  "ddr2_a[2]"     LOC = "M10" ;     #bank 3
+NET  "ddr2_a[1]"     LOC = "M9" ;     #bank 3
+NET  "ddr2_a[0]"     LOC = "J5" ;     #bank 3
+
+NET  "ddr2_ba[1]"    LOC = "J4" ;     #bank 3
+NET  "ddr2_ba[0]"    LOC = "K6" ;     #bank 3
+
+NET  "ddr2_cke"      LOC = "L7" ;     #bank 3
+NET  "ddr2_cs_n"     LOC = "H2" ;     #bank 3
+NET  "ddr2_ras_n"    LOC = "H1" ;     #bank 3
+NET  "ddr2_cas_n"    LOC = "L10" ;     #bank 3
+NET  "ddr2_we_n"     LOC = "L9" ;     #bank 3
+NET  "ddr2_odt"      LOC = "G3" ;     #bank 3
+
+##################################################################################################
+## There is an issue with Xilinx ISE_DS 10.1 tool, default drive strength of LVCMOS18 for Spartan-3A 
+## should set to 8MA for top/bottom banks, the tool is setting it to 12MA.
+## We are setting the drive strength to 8MA in UCF file for following signal/signals
+## as work aroud until the ISE bug is fixed
+
+##################################################################################################
+
+##################################################################################################
+## MAXDELAY constraints
+##################################################################################################
+
+##################################################################################################
+## Constraint to have the tap delay inverter connection wire length to be the same and minimum to get
+## accurate calibration of tap delays. The following constraints are independent of frequency.
+##################################################################################################
+NET "*/infrastructure_top0/cal_top0/tap_dly0/tap[7]"  MAXDELAY = 400 ps;
+NET "*/infrastructure_top0/cal_top0/tap_dly0/tap[15]"  MAXDELAY = 400 ps;
+NET "*/infrastructure_top0/cal_top0/tap_dly0/tap[23]"  MAXDELAY = 400 ps;
+
+##################################################################################################
+## MAXDELAY constraint on inter LUT delay elements. This constraint is required to minimize the 
+## wire delays between the LUTs.
+##################################################################################################
+NET "*/data_path0/data_read_controller0/gen_delay*dqs_delay_col*/delay*"  MAXDELAY = 190 ps;
+NET "*/data_path0/data_read_controller0/rst_dqs_div_delayed/delay*"  MAXDELAY = 200 ps;
+
+##################################################################################################
+## Constraint from the dqs PAD to input of LUT delay element.
+##################################################################################################
+NET "*/dqs_int_delay_in*" MAXDELAY = 661 ps;
+
+##################################################################################################
+## Constraint from rst_dqs_div_in PAD to input of LUT delay element.
+##################################################################################################
+NET "*/dqs_div_rst" MAXDELAY = 468 ps;
+
+##################################################################################################
+## Following are the MAXDELAY constraints on delayed rst_dqs_div net and fifo write enable signals.
+## These constraints are required since these paths are not covered by timing analysis. The requirement is total
+## delay on delayed rst_dqs_div and fifo_wr_en nets should not exceed the clock period.
+##################################################################################################
+NET "*/data_path0/data_read_controller0/rst_dqs_div"  MAXDELAY = 3007 ps;
+#NET "*/data_path0/data_read0/fifo*_wr_en*"                    MAXDELAY = 3007 ps;
+NET "*/data_path0/fifo*_wr_en[*]"                     MAXDELAY = 3007 ps;
+
+##################################################################################################
+## The MAXDELAY value on fifo write address should be less than clock period. This constraint is 
+## required since this path is not covered by timing analysis.
+##################################################################################################
+#NET "*/data_path0/data_read0/fifo*_wr_addr[*]"           MAXDELAY = 6391 ps;
+NET "*/data_path0/fifo*_wr_addr[*]"           MAXDELAY = 6391 ps;
+
+##################################################################################################
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 1, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[1]" LOC = "V8";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[0].strobe/fifo_bit1"   LOC = SLICE_X2Y26;
+INST "*/data_path0/data_read0/gen_strobe[0].strobe_n/fifo_bit1" LOC = SLICE_X2Y27;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 0, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[0]" LOC = "U9";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[0].strobe/fifo_bit0"   LOC = SLICE_X0Y26;
+INST "*/data_path0/data_read0/gen_strobe[0].strobe_n/fifo_bit0" LOC = SLICE_X0Y27;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 3, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[3]" LOC = "AC1";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[0].strobe/fifo_bit3"   LOC = SLICE_X2Y28;
+INST "*/data_path0/data_read0/gen_strobe[0].strobe_n/fifo_bit3" LOC = SLICE_X2Y29;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 2, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[2]" LOC = "AB1";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[0].strobe/fifo_bit2"   LOC = SLICE_X0Y28;
+INST "*/data_path0/data_read0/gen_strobe[0].strobe_n/fifo_bit2" LOC = SLICE_X0Y29;
+
+##################################################################################################
+##  constraints for bit ddr2_dqs_n, 0, location in tile: 0
+##################################################################################################
+NET "ddr2_dqs_n[0]" LOC = "V6";     #bank 3
+
+##################################################################################################
+##  constraints for bit ddr2_dqs, 0, location in tile: 0
+##################################################################################################
+NET "ddr2_dqs[0]" LOC = "V7";     #bank 3
+
+##################################################################################################
+## LUT location constraints for dqs_delayed_col0
+##################################################################################################
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col0/one" LOC = SLICE_X2Y31;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col0/one" BEL = F;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col0/two" LOC = SLICE_X2Y31;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col0/two" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col0/three" LOC = SLICE_X2Y30;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col0/three" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col0/four" LOC = SLICE_X2Y30;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col0/four" BEL = F;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col0/five" LOC = SLICE_X3Y31;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col0/five" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col0/six" LOC = SLICE_X3Y30;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col0/six" BEL = G;
+
+##################################################################################################
+## LUT location constraints for dqs_delayed_col1
+##################################################################################################
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col1/one" LOC = SLICE_X0Y31;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col1/one" BEL = F;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col1/two" LOC = SLICE_X0Y31;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col1/two" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col1/three" LOC = SLICE_X0Y30;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col1/three" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col1/four" LOC = SLICE_X0Y30;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col1/four" BEL = F;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col1/five" LOC = SLICE_X1Y31;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col1/five" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col1/six" LOC = SLICE_X1Y30;
+INST "*/data_path0/data_read_controller0/gen_delay[0].dqs_delay_col1/six" BEL = G;
+
+##################################################################################################
+## Slice location constraints for Fifo write address and write enable
+##################################################################################################
+INST "*/data_path0/data_read_controller0/gen_wr_addr[0].fifo_0_wr_addr_inst/bit0" LOC = SLICE_X1Y26;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[0].fifo_0_wr_addr_inst/bit1" LOC = SLICE_X1Y26;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[0].fifo_0_wr_addr_inst/bit2" LOC = SLICE_X1Y27;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[0].fifo_0_wr_addr_inst/bit3" LOC = SLICE_X1Y27;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[0].fifo_1_wr_addr_inst/bit0" LOC = SLICE_X3Y26;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[0].fifo_1_wr_addr_inst/bit1" LOC = SLICE_X3Y26;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[0].fifo_1_wr_addr_inst/bit2" LOC = SLICE_X3Y27;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[0].fifo_1_wr_addr_inst/bit3" LOC = SLICE_X3Y27;
+#INST "*/data_path0/data_read_controller0/gen_wr_en[0].fifo_0_wr_en_inst" LOC = SLICE_X1Y29;
+INST "*/data_path0/data_read_controller0/gen_wr_en[0].fifo_0_wr_en_inst/dout*" LOC = SLICE_X1Y29;
+#INST "*/data_path0/data_read_controller0/gen_wr_en[0].fifo_1_wr_en_inst" LOC = SLICE_X3Y29;
+INST "*data_path0/data_read_controller0/gen_wr_en[0].fifo_1_wr_en_inst/dout*" LOC = SLICE_X3Y29;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 5, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[5]" LOC = "Y6";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[0].strobe/fifo_bit5"   LOC = SLICE_X2Y34;
+INST "*/data_path0/data_read0/gen_strobe[0].strobe_n/fifo_bit5" LOC = SLICE_X2Y35;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 4, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[4]" LOC = "Y5";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[0].strobe/fifo_bit4"   LOC = SLICE_X0Y34;
+INST "*/data_path0/data_read0/gen_strobe[0].strobe_n/fifo_bit4" LOC = SLICE_X0Y35;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 7, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[7]" LOC = "U8";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[0].strobe/fifo_bit7"   LOC = SLICE_X2Y36;
+INST "*/data_path0/data_read0/gen_strobe[0].strobe_n/fifo_bit7" LOC = SLICE_X2Y37;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 6, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[6]" LOC = "U7";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[0].strobe/fifo_bit6"   LOC = SLICE_X0Y36;
+INST "*/data_path0/data_read0/gen_strobe[0].strobe_n/fifo_bit6" LOC = SLICE_X0Y37;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 9, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[9]" LOC = "AA3";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[1].strobe/fifo_bit1"   LOC = SLICE_X2Y38;
+INST "*/data_path0/data_read0/gen_strobe[1].strobe_n/fifo_bit1" LOC = SLICE_X2Y39;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 8, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[8]" LOC = "AA2";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[1].strobe/fifo_bit0"   LOC = SLICE_X0Y38;
+INST "*/data_path0/data_read0/gen_strobe[1].strobe_n/fifo_bit0" LOC = SLICE_X0Y39;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 11, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[11]" LOC = "Y2";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[1].strobe/fifo_bit3"   LOC = SLICE_X2Y42;
+INST "*/data_path0/data_read0/gen_strobe[1].strobe_n/fifo_bit3" LOC = SLICE_X2Y43;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 10, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[10]" LOC = "Y1";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[1].strobe/fifo_bit2"   LOC = SLICE_X0Y42;
+INST "*/data_path0/data_read0/gen_strobe[1].strobe_n/fifo_bit2" LOC = SLICE_X0Y43;
+
+##################################################################################################
+##  constraints for bit ddr2_dqs_n, 1, location in tile: 0
+##################################################################################################
+NET "ddr2_dqs_n[1]" LOC = "W4";     #bank 3
+
+##################################################################################################
+##  constraints for bit ddr2_dqs, 1, location in tile: 0
+##################################################################################################
+NET "ddr2_dqs[1]" LOC = "W3";     #bank 3
+
+##################################################################################################
+## LUT location constraints for dqs_delayed_col0
+##################################################################################################
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col0/one" LOC = SLICE_X2Y45;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col0/one" BEL = F;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col0/two" LOC = SLICE_X2Y45;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col0/two" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col0/three" LOC = SLICE_X2Y44;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col0/three" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col0/four" LOC = SLICE_X2Y44;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col0/four" BEL = F;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col0/five" LOC = SLICE_X3Y45;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col0/five" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col0/six" LOC = SLICE_X3Y44;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col0/six" BEL = G;
+
+##################################################################################################
+## LUT location constraints for dqs_delayed_col1
+##################################################################################################
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col1/one" LOC = SLICE_X0Y45;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col1/one" BEL = F;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col1/two" LOC = SLICE_X0Y45;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col1/two" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col1/three" LOC = SLICE_X0Y44;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col1/three" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col1/four" LOC = SLICE_X0Y44;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col1/four" BEL = F;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col1/five" LOC = SLICE_X1Y45;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col1/five" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col1/six" LOC = SLICE_X1Y44;
+INST "*/data_path0/data_read_controller0/gen_delay[1].dqs_delay_col1/six" BEL = G;
+
+##################################################################################################
+## Slice location constraints for Fifo write address and write enable
+##################################################################################################
+INST "*/data_path0/data_read_controller0/gen_wr_addr[1].fifo_0_wr_addr_inst/bit0" LOC = SLICE_X1Y40;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[1].fifo_0_wr_addr_inst/bit1" LOC = SLICE_X1Y40;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[1].fifo_0_wr_addr_inst/bit2" LOC = SLICE_X1Y41;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[1].fifo_0_wr_addr_inst/bit3" LOC = SLICE_X1Y41;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[1].fifo_1_wr_addr_inst/bit0" LOC = SLICE_X3Y40;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[1].fifo_1_wr_addr_inst/bit1" LOC = SLICE_X3Y40;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[1].fifo_1_wr_addr_inst/bit2" LOC = SLICE_X3Y41;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[1].fifo_1_wr_addr_inst/bit3" LOC = SLICE_X3Y41;
+#INST "*/data_path0/data_read_controller0/gen_wr_en[1].fifo_0_wr_en_inst" LOC = SLICE_X1Y43;
+INST "*/data_path0/data_read_controller0/gen_wr_en[1].fifo_0_wr_en_inst/dout*" LOC = SLICE_X1Y43;
+#INST "*/data_path0/data_read_controller0/gen_wr_en[1].fifo_1_wr_en_inst" LOC = SLICE_X3Y43;
+INST "*/data_path0/data_read_controller0/gen_wr_en[1].fifo_1_wr_en_inst/dout*" LOC = SLICE_X3Y43;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 13, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[13]" LOC = "U6";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[1].strobe/fifo_bit5"   LOC = SLICE_X2Y46;
+INST "*/data_path0/data_read0/gen_strobe[1].strobe_n/fifo_bit5" LOC = SLICE_X2Y47;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 12, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[12]" LOC = "T7";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[1].strobe/fifo_bit4"   LOC = SLICE_X0Y46;
+INST "*/data_path0/data_read0/gen_strobe[1].strobe_n/fifo_bit4" LOC = SLICE_X0Y47;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 15, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[15]" LOC = "V5";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[1].strobe/fifo_bit7"   LOC = SLICE_X2Y50;
+INST "*/data_path0/data_read0/gen_strobe[1].strobe_n/fifo_bit7" LOC = SLICE_X2Y51;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 14, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[14]" LOC = "U5";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[1].strobe/fifo_bit6"   LOC = SLICE_X0Y50;
+INST "*/data_path0/data_read0/gen_strobe[1].strobe_n/fifo_bit6" LOC = SLICE_X0Y51;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 16, location in tile: 0
+##################################################################################################
+# Not correct! Schematic on board says R8  Julius
+#NET "ddr2_dq[16]" LOC = "V1";     #bank 3
+#INST "*/data_path0/data_read0/gen_strobe[2].strobe/fifo_bit0"   LOC = SLICE_X0Y54;
+#INST "*/data_path0/data_read0/gen_strobe[2].strobe_n/fifo_bit0" LOC = SLICE_X0Y55;
+
+NET "ddr2_dq[16]" LOC = "R8";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[2].strobe/fifo_bit0"   LOC = SLICE_X0Y58;
+INST "*/data_path0/data_read0/gen_strobe[2].strobe_n/fifo_bit0" LOC = SLICE_X0Y59;
+
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 17, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[17]" LOC = "R7";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[2].strobe/fifo_bit1"   LOC = SLICE_X2Y58;
+INST "*/data_path0/data_read0/gen_strobe[2].strobe_n/fifo_bit1" LOC = SLICE_X2Y59;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 18, location in tile: 0
+##################################################################################################
+# Not correct! Schematic says U1 for this bit. - Julius
+#
+#NET "ddr2_dq[18]" LOC = "R8";     #bank 3
+#INST "*/data_path0/data_read0/gen_strobe[2].strobe/fifo_bit2"   LOC = SLICE_X0Y58;
+#INST "*/data_path0/data_read0/gen_strobe[2].strobe_n/fifo_bit2" LOC = SLICE_X0Y59;
+
+NET "ddr2_dq[18]" LOC = "U1";     #bank 3
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 19, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[19]" LOC = "U2";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[2].strobe/fifo_bit3"   LOC = SLICE_X2Y60;
+INST "*/data_path0/data_read0/gen_strobe[2].strobe_n/fifo_bit3" LOC = SLICE_X2Y61;
+
+##################################################################################################
+##  constraints for bit ddr2_dqs_n, 2, location in tile: 0
+##################################################################################################
+NET "ddr2_dqs_n[2]" LOC = "U4";     #bank 3
+
+##################################################################################################
+##  constraints for bit ddr2_dqs, 2, location in tile: 0
+##################################################################################################
+NET "ddr2_dqs[2]" LOC = "T5";     #bank 3
+
+##################################################################################################
+## LUT location constraints for dqs_delayed_col0
+##################################################################################################
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col0/one" LOC = SLICE_X2Y67;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col0/one" BEL = F;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col0/two" LOC = SLICE_X2Y67;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col0/two" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col0/three" LOC = SLICE_X2Y66;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col0/three" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col0/four" LOC = SLICE_X2Y66;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col0/four" BEL = F;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col0/five" LOC = SLICE_X3Y67;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col0/five" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col0/six" LOC = SLICE_X3Y66;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col0/six" BEL = G;
+
+##################################################################################################
+## LUT location constraints for dqs_delayed_col1
+##################################################################################################
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col1/one" LOC = SLICE_X0Y67;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col1/one" BEL = F;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col1/two" LOC = SLICE_X0Y67;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col1/two" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col1/three" LOC = SLICE_X0Y66;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col1/three" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col1/four" LOC = SLICE_X0Y66;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col1/four" BEL = F;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col1/five" LOC = SLICE_X1Y67;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col1/five" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col1/six" LOC = SLICE_X1Y66;
+INST "*/data_path0/data_read_controller0/gen_delay[2].dqs_delay_col1/six" BEL = G;
+
+##################################################################################################
+## Slice location constraints for Fifo write address and write enable
+##################################################################################################
+INST "*/data_path0/data_read_controller0/gen_wr_addr[2].fifo_0_wr_addr_inst/bit0" LOC = SLICE_X1Y62;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[2].fifo_0_wr_addr_inst/bit1" LOC = SLICE_X1Y62;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[2].fifo_0_wr_addr_inst/bit2" LOC = SLICE_X1Y63;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[2].fifo_0_wr_addr_inst/bit3" LOC = SLICE_X1Y63;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[2].fifo_1_wr_addr_inst/bit0" LOC = SLICE_X3Y62;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[2].fifo_1_wr_addr_inst/bit1" LOC = SLICE_X3Y62;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[2].fifo_1_wr_addr_inst/bit2" LOC = SLICE_X3Y63;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[2].fifo_1_wr_addr_inst/bit3" LOC = SLICE_X3Y63;
+#INST "*/data_path0/data_read_controller0/gen_wr_en[2].fifo_0_wr_en_inst" LOC = SLICE_X1Y65;
+INST "*/data_path0/data_read_controller0/gen_wr_en[2].fifo_0_wr_en_inst/dout*" LOC = SLICE_X1Y65;
+#INST "*/data_path0/data_read_controller0/gen_wr_en[2].fifo_1_wr_en_inst" LOC = SLICE_X3Y65;
+INST "*/data_path0/data_read_controller0/gen_wr_en[2].fifo_1_wr_en_inst/dout*" LOC = SLICE_X3Y65;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 21, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[21]" LOC = "P9";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[2].strobe/fifo_bit5"   LOC = SLICE_X2Y68;
+INST "*/data_path0/data_read0/gen_strobe[2].strobe_n/fifo_bit5" LOC = SLICE_X2Y69;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 20, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[20]" LOC = "P8";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[2].strobe/fifo_bit4"   LOC = SLICE_X0Y68;
+INST "*/data_path0/data_read0/gen_strobe[2].strobe_n/fifo_bit4" LOC = SLICE_X0Y69;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 23, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[23]" LOC = "R6";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[2].strobe/fifo_bit7"   LOC = SLICE_X2Y70;
+INST "*/data_path0/data_read0/gen_strobe[2].strobe_n/fifo_bit7" LOC = SLICE_X2Y71;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 22, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[22]" LOC = "R5";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[2].strobe/fifo_bit6"   LOC = SLICE_X0Y70;
+INST "*/data_path0/data_read0/gen_strobe[2].strobe_n/fifo_bit6" LOC = SLICE_X0Y71;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 25, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[25]" LOC = "P6";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[3].strobe/fifo_bit1"   LOC = SLICE_X2Y74;
+INST "*/data_path0/data_read0/gen_strobe[3].strobe_n/fifo_bit1" LOC = SLICE_X2Y75;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 24, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[24]" LOC = "P7";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[3].strobe/fifo_bit0"   LOC = SLICE_X0Y74;
+INST "*/data_path0/data_read0/gen_strobe[3].strobe_n/fifo_bit0" LOC = SLICE_X0Y75;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 27, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[27]" LOC = "T4";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[3].strobe/fifo_bit3"   LOC = SLICE_X2Y76;
+INST "*/data_path0/data_read0/gen_strobe[3].strobe_n/fifo_bit3" LOC = SLICE_X2Y77;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 26, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[26]" LOC = "T3";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[3].strobe/fifo_bit2"   LOC = SLICE_X0Y76;
+INST "*/data_path0/data_read0/gen_strobe[3].strobe_n/fifo_bit2" LOC = SLICE_X0Y77;
+
+##################################################################################################
+##  constraints for bit ddr2_dqs_n, 3, location in tile: 0
+##################################################################################################
+NET "ddr2_dqs_n[3]" LOC = "R4";     #bank 3
+
+##################################################################################################
+##  constraints for bit ddr2_dqs, 3, location in tile: 0
+##################################################################################################
+NET "ddr2_dqs[3]" LOC = "R3";     #bank 3
+
+##################################################################################################
+## LUT location constraints for dqs_delayed_col0
+##################################################################################################
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col0/one" LOC = SLICE_X2Y79;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col0/one" BEL = F;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col0/two" LOC = SLICE_X2Y79;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col0/two" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col0/three" LOC = SLICE_X2Y78;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col0/three" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col0/four" LOC = SLICE_X2Y78;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col0/four" BEL = F;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col0/five" LOC = SLICE_X3Y79;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col0/five" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col0/six" LOC = SLICE_X3Y78;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col0/six" BEL = G;
+
+##################################################################################################
+## LUT location constraints for dqs_delayed_col1
+##################################################################################################
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col1/one" LOC = SLICE_X0Y79;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col1/one" BEL = F;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col1/two" LOC = SLICE_X0Y79;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col1/two" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col1/three" LOC = SLICE_X0Y78;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col1/three" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col1/four" LOC = SLICE_X0Y78;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col1/four" BEL = F;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col1/five" LOC = SLICE_X1Y79;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col1/five" BEL = G;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col1/six" LOC = SLICE_X1Y78;
+INST "*/data_path0/data_read_controller0/gen_delay[3].dqs_delay_col1/six" BEL = G;
+
+##################################################################################################
+## Slice location constraints for Fifo write address and write enable
+##################################################################################################
+INST "*/data_path0/data_read_controller0/gen_wr_addr[3].fifo_0_wr_addr_inst/bit0" LOC = SLICE_X1Y74;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[3].fifo_0_wr_addr_inst/bit1" LOC = SLICE_X1Y74;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[3].fifo_0_wr_addr_inst/bit2" LOC = SLICE_X1Y75;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[3].fifo_0_wr_addr_inst/bit3" LOC = SLICE_X1Y75;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[3].fifo_1_wr_addr_inst/bit0" LOC = SLICE_X3Y74;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[3].fifo_1_wr_addr_inst/bit1" LOC = SLICE_X3Y74;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[3].fifo_1_wr_addr_inst/bit2" LOC = SLICE_X3Y75;
+INST "*/data_path0/data_read_controller0/gen_wr_addr[3].fifo_1_wr_addr_inst/bit3" LOC = SLICE_X3Y75;
+#INST "*/data_path0/data_read_controller0/gen_wr_en[3].fifo_0_wr_en_inst" LOC = SLICE_X1Y77;
+INST "*/data_path0/data_read_controller0/gen_wr_en[3].fifo_0_wr_en_inst/dout*" LOC = SLICE_X1Y77;
+#INST "*/data_path0/data_read_controller0/gen_wr_en[3].fifo_1_wr_en_inst" LOC = SLICE_X3Y77;
+INST "*/data_path0/data_read_controller0/gen_wr_en[3].fifo_1_wr_en_inst/dout*" LOC = SLICE_X3Y77;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 29, location in tile: 0
+##################################################################################################
+# Not correct! Schematic says P10 - Julius
+#NET "ddr2_dq[29]" LOC = "R2";     #bank 3
+#INST "*/data_path0/data_read0/gen_strobe[3].strobe/fifo_bit5"   LOC = SLICE_X2Y82;
+#INST "*/data_path0/data_read0/gen_strobe[3].strobe_n/fifo_bit5" LOC = SLICE_X2Y83;
+
+NET "ddr2_dq[29]" LOC = "P10";     #bank 3
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 28, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[28]" LOC = "N9";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[3].strobe/fifo_bit4"   LOC = SLICE_X0Y84;
+INST "*/data_path0/data_read0/gen_strobe[3].strobe_n/fifo_bit4" LOC = SLICE_X0Y85;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 31, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[31]" LOC = "P3";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[3].strobe/fifo_bit7"   LOC = SLICE_X2Y86;
+INST "*/data_path0/data_read0/gen_strobe[3].strobe_n/fifo_bit7" LOC = SLICE_X2Y87;
+
+##################################################################################################
+##  constraints for bit ddr2_dq, 30, location in tile: 0
+##################################################################################################
+NET "ddr2_dq[30]" LOC = "P4";     #bank 3
+INST "*/data_path0/data_read0/gen_strobe[3].strobe/fifo_bit6"   LOC = SLICE_X0Y86;
+INST "*/data_path0/data_read0/gen_strobe[3].strobe_n/fifo_bit6" LOC = SLICE_X0Y87;
+
+##################################################################################################
+##  constraints for bit rst_dqs_div_in, 1, location in tile: 1
+##################################################################################################
+NET "ddr2_rst_dqs_div_in" LOC = "T9";     #bank 3
+
+##################################################################################################
+## Slice location constraints for delayed rst_dqs_div signal
+##################################################################################################
+INST "*/data_path0/data_read_controller0/rst_dqs_div_delayed/one" LOC = SLICE_X0Y53;
+INST "*/data_path0/data_read_controller0/rst_dqs_div_delayed/one" BEL = F;
+INST "*/data_path0/data_read_controller0/rst_dqs_div_delayed/two" LOC = SLICE_X0Y52;
+INST "*/data_path0/data_read_controller0/rst_dqs_div_delayed/two" BEL = G;
+INST "*/data_path0/data_read_controller0/rst_dqs_div_delayed/three" LOC = SLICE_X0Y53;
+INST "*/data_path0/data_read_controller0/rst_dqs_div_delayed/three" BEL = G;
+INST "*/data_path0/data_read_controller0/rst_dqs_div_delayed/four" LOC = SLICE_X1Y52;
+INST "*/data_path0/data_read_controller0/rst_dqs_div_delayed/four" BEL = F;
+INST "*/data_path0/data_read_controller0/rst_dqs_div_delayed/five" LOC = SLICE_X1Y52;
+INST "*/data_path0/data_read_controller0/rst_dqs_div_delayed/five" BEL = G;
+INST "*/data_path0/data_read_controller0/rst_dqs_div_delayed/six" LOC = SLICE_X1Y53;
+INST "*/data_path0/data_read_controller0/rst_dqs_div_delayed/six" BEL = G;
+
+##################################################################################################
+##  constraints for bit rst_dqs_div_out, 1, location in tile: 0
+##################################################################################################
+NET "ddr2_rst_dqs_div_out" LOC = "T10";     #bank 3
+
+##################################################################################################
+## Location constraint for rst_dqs_div_r flop in the controller. This is to be placed close the PAD
+## that drives the rst_dqs_div _out signal to meet the timing.
+##################################################################################################
+INST "*/controller0/rst_dqs_div_r" LOC = SLICE_X4Y52;
+##################################################################################################
+
+## DDR controller cache interface domain crossing timing ignores
+
+NET "wb_clk" TNM_NET = "WB_CLK";
+NET "xilinx_s3adsp_ddr2/xilinx_s3adsp_ddr2_if/ddr2_if_clk" TNM_NET = "DDR2_IF_CLK";
+
+# Path constraints - if bus clock is 50Mhz they have 20ns
+TIMESPEC TS_ddr2_controller_false_paths = FROM "WB_CLK" to "DDR2_IF_CLK" TIG;
+TIMESPEC TS_ddr2_controller_false_paths2 = FROM "DDR2_IF_CLK" to "WB_CLK" TIG;
+
+
+#### Module FLASH_16Mx8 constraints
+# Controller not present, so commenting out - Julius
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<31>  LOC="AC23" | IOSTANDARD = LVCMOS33; # Flash A0
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<30>  LOC="AC24" | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<29>  LOC="R21"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<28>  LOC="R22"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<27>  LOC="T23"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<26>  LOC="T24"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<25>  LOC="R18"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<24>  LOC="R17"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<23>  LOC="R25"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<22>  LOC="R26"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<21>  LOC="M26"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<20>  LOC="M25"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<19>  LOC="L24"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<18>  LOC="M23"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<17>  LOC="N18"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<16>  LOC="N17"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<15>  LOC="N20"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<14>  LOC="M20"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<13>  LOC="J26"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<12>  LOC="J25"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<11>  LOC="J21"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<10>  LOC="H21"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<9>   LOC="C26"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_A_pin<8>   LOC="C25"  | IOSTANDARD = LVCMOS33; # Flash A23
+#Net fpga_0_FLASH_16Mx8_Mem_DQ_pin<0>  LOC="AE10" | IOSTANDARD = LVCMOS25; # Flash D7
+#Net fpga_0_FLASH_16Mx8_Mem_DQ_pin<1>  LOC="AF10" | IOSTANDARD = LVCMOS25;
+#Net fpga_0_FLASH_16Mx8_Mem_DQ_pin<2>  LOC="AF12" | IOSTANDARD = LVCMOS25;
+#Net fpga_0_FLASH_16Mx8_Mem_DQ_pin<3>  LOC="AE12" | IOSTANDARD = LVCMOS25;
+#Net fpga_0_FLASH_16Mx8_Mem_DQ_pin<4>  LOC="Y15"  | IOSTANDARD = LVCMOS25;
+#Net fpga_0_FLASH_16Mx8_Mem_DQ_pin<5>  LOC="AF18" | IOSTANDARD = LVCMOS25;
+#Net fpga_0_FLASH_16Mx8_Mem_DQ_pin<6>  LOC="AE18" | IOSTANDARD = LVCMOS25;
+#Net fpga_0_FLASH_16Mx8_Mem_DQ_pin<7>  LOC="AF24" | IOSTANDARD = LVCMOS25; # Flash D0
+#Net fpga_0_FLASH_16Mx8_Mem_WEN_pin    LOC="Y20"  | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_OEN_pin<0> LOC="AE26" | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_Mem_CEN_pin<0> LOC="AD25" | IOSTANDARD = LVCMOS33;
+#Net fpga_0_FLASH_16Mx8_rpn_dummy_pin  LOC="N24"  | IOSTANDARD = LVCMOS33;
+
+#### Module Ethernet_MAC constraints
+
+Net eth0_tx_er LOC="E4" | IOSTANDARD = LVCMOS18; # "Dummy" pin
+Net eth0_tx_clk LOC="P2" | IOSTANDARD = LVCMOS18;
+Net eth0_tx_en LOC="D3" | IOSTANDARD = LVCMOS18;
+Net eth0_tx_data<3> LOC="B1" | IOSTANDARD = LVCMOS18;
+Net eth0_tx_data<2> LOC="B2" | IOSTANDARD = LVCMOS18;
+Net eth0_tx_data<1> LOC="J9" | IOSTANDARD = LVCMOS18;
+Net eth0_tx_data<0> LOC="J8" | IOSTANDARD = LVCMOS18;
+
+Net eth0_crs LOC="G1" | IOSTANDARD = LVCMOS18;
+Net eth0_crs IOBDELAY=NONE;
+Net eth0_col LOC="Y3" | IOSTANDARD = LVCMOS18;
+Net eth0_col IOBDELAY=NONE;
+
+
+Net eth0_rx_clk LOC="P1" | IOSTANDARD = LVCMOS18;
+
+Net eth0_dv LOC="D1" | IOSTANDARD = LVCMOS18;
+Net eth0_dv IOBDELAY=NONE;
+Net eth0_rx_data<0> LOC="C2" | IOSTANDARD = LVCMOS18;
+Net eth0_rx_data<0> IOBDELAY=NONE;
+Net eth0_rx_data<1> LOC="G2" | IOSTANDARD = LVCMOS18;
+Net eth0_rx_data<1> IOBDELAY=NONE;
+Net eth0_rx_data<2> LOC="G5" | IOSTANDARD = LVCMOS18;
+Net eth0_rx_data<2> IOBDELAY=NONE;
+Net eth0_rx_data<3> LOC="D2" | IOSTANDARD = LVCMOS18;
+Net eth0_rx_data<3> IOBDELAY=NONE;
+Net eth0_rx_er LOC="J3" | IOSTANDARD = LVCMOS18;
+Net eth0_rx_er IOBDELAY=NONE;
+
+Net eth0_rst_n_o LOC="G4" | IOSTANDARD = LVCMOS18;
+
+Net eth0_mdc_pad_o LOC="F4" | IOSTANDARD = LVCMOS18;
+Net eth0_md_pad_io LOC="F5" | IOSTANDARD = LVCMOS18;
+
+#Net eth0_rx_clk PERIOD=40000 ps;
+Net eth0_rx_clk TNM_NET = eth0_rx_clk;
+TIMESPEC TS_eth0_rx_clk = PERIOD eth0_rx_clk 40000 ps;
+#Net eth0_tx_clk PERIOD=40000 ps;
+Net eth0_tx_clk TNM_NET = eth0_tx_clk;
+TIMESPEC TS_eth0_tx_clk = PERIOD eth0_tx_clk 40000 ps;
+
+###################################################################################3
+# EXP Expansion Connector JX1
+
+# JX1 - Outputs: 36 Single-ended, 48 Differential (24 pairs)
+#NET se_o_grp1<0>   LOC ="C22" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_0" 
+#NET se_o_grp1<1>   LOC ="A22" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_2" 
+#NET se_o_grp1<2>   LOC ="C21" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_4" 
+#NET se_o_grp1<3>   LOC ="B21" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_6" 
+#NET se_o_grp1<4>   LOC ="C20" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_8" 
+#NET se_o_grp1<5>   LOC ="B20" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_10"
+#NET se_o_grp1<6>   LOC ="A20" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_12"
+#NET se_o_grp1<7>   LOC ="D20" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_14"
+#NET se_o_grp1<8>   LOC ="B19" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_16"
+#NET se_o_grp1<9>   LOC ="A19" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_18"
+#NET se_o_grp1<10>  LOC ="C18" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_20"
+#NET se_o_grp1<11>  LOC ="B18" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_22"
+#NET se_o_grp1<12>  LOC ="A18" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_24"
+#NET se_o_grp1<13>  LOC ="C17" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_26"
+#NET se_o_grp1<14>  LOC ="B14" | IOSTANDARD = LVCMOS25; # "EXP1_DIFF_CLK_IN_P"
+#NET se_o_grp1<15>  LOC ="A14" | IOSTANDARD = LVCMOS25; # "EXP1_DIFF_CLK_IN_N"
+#NET se_o_grp1<16>  LOC ="D17" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_30"
+#NET se_o_grp1<17>  LOC ="B17" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_31"
+#NET se_o_grp1<18>  LOC ="G20" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_1" 
+#NET se_o_grp1<19>  LOC ="G19" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_3" 
+#NET se_o_grp1<20>  LOC ="E21" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_5" 
+#NET se_o_grp1<21>  LOC ="D23" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_7" 
+#NET se_o_grp1<22>  LOC ="B23" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_9" 
+#NET se_o_grp1<23>  LOC ="C23" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_11"
+#NET se_o_grp1<24>  LOC ="D22" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_13"
+#NET se_o_grp1<25>  LOC ="D21" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_15"
+#NET se_o_grp1<26>  LOC ="F20" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_17"
+#NET se_o_grp1<27>  LOC ="H17" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_19"
+#NET se_o_grp1<28>  LOC ="F19" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_21"
+#NET se_o_grp1<29>  LOC ="G17" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_23"
+#NET se_o_grp1<30>  LOC ="K16" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_25"
+#NET se_o_grp1<31>  LOC ="F17" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_27"
+
+#NET se_o_grp2<0>   LOC ="D18" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_28"
+#NET se_o_grp2<1>   LOC ="J14" | IOSTANDARD = LVCMOS25; # "EXP1_SE_CLK_IN"
+#NET se_o_grp2<2>   LOC ="E17" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_29"
+#NET se_o_grp2<3>   LOC ="G10" | IOSTANDARD = LVCMOS25; # "EXP1_SE_CLK_OUT"
+#NET se_o_grp2<4>   LOC ="C16" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_32"
+#NET se_o_grp2<5>   LOC ="J16" | IOSTANDARD = LVCMOS25; # "EXP1_SE_IO_33"
+# DIFF pair 10 is on "CC" I/O so have to make single-ended to be outputs
+#NET se_o_grp2<6>   LOC ="C13" | IOSTANDARD = LVCMOS25; # "EXP1_DIFF_N10"      
+#NET se_o_grp2<7>   LOC ="B13" | IOSTANDARD = LVCMOS25; # "EXP1_DIFF_P10"      
+
+#NET dp_o_grp3<0>   LOC ="D6"  | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N0"       
+#NET dp_o_grp3<1>   LOC ="C6"  | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N2"       
+#NET dp_o_grp3<2>   LOC ="C7"  | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N4"       
+#NET dp_o_grp3<3>   LOC ="B8"  | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N6"       
+#NET dp_o_grp3<4>   LOC ="B9"  | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N8"       
+#NET dp_o_grp3<5>   LOC ="D10" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N12"      
+#NET dp_o_grp3<6>   LOC ="D11" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N14"      
+#NET dp_o_grp3<7>   LOC ="B4"  | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_CLK_OUT_N"
+#NET dp_o_grp3<8>   LOC ="B12" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N16"      
+#NET dp_o_grp3<9>   LOC ="C12" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N18"      
+#NET dp_o_grp3<10>  LOC ="C15" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N20"      
+#NET dp_o_grp3<11>  LOC ="K11" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N1"       
+#NET dp_o_grp3<12>  LOC ="D8"  | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N3"       
+#NET dp_o_grp3<13>  LOC ="D9"  | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N5"       
+#NET dp_o_grp3<14>  LOC ="B10" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N7" 
+#NET dp_o_grp3<15>  LOC ="K12" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N9" 
+
+#NET dp_o_grp3<16>  LOC ="C5"  | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P0"       
+#NET dp_o_grp3<17>  LOC ="B6"  | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P2"       
+#NET dp_o_grp3<18>  LOC ="B7"  | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P4"       
+#NET dp_o_grp3<19>  LOC ="A8"  | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P6"       
+#NET dp_o_grp3<20>  LOC ="A9"  | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P8"       
+#NET dp_o_grp3<21>  LOC ="C10" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P12"      
+#NET dp_o_grp3<22>  LOC ="C11" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P14"      
+#NET dp_o_grp3<23>  LOC ="A4"  | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_CLK_OUT_P"
+#NET dp_o_grp3<24>  LOC ="A12" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P16"      
+#NET dp_o_grp3<25>  LOC ="D13" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P18"      
+#NET dp_o_grp3<26>  LOC ="D16" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P20"      
+#NET dp_o_grp3<27>  LOC ="J11" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P1"       
+#NET dp_o_grp3<28>  LOC ="C8"  | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P3"       
+#NET dp_o_grp3<29>  LOC ="E10" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P5"       
+#NET dp_o_grp3<30>  LOC ="A10" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P7" 
+#NET dp_o_grp3<31>  LOC ="J12" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P9" 
+
+#NET dp_o_grp4<0>   LOC ="F12" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N11"
+#NET dp_o_grp4<1>   LOC ="H12" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N13"
+#NET dp_o_grp4<2>   LOC ="H15" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N15"
+#NET dp_o_grp4<3>   LOC ="F14" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N17"
+#NET dp_o_grp4<4>   LOC ="E15" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N19"
+#NET dp_o_grp4<5>   LOC ="A15" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_N21"
+
+#NET dp_o_grp4<6>   LOC ="E12" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P11"
+#NET dp_o_grp4<7>   LOC ="G12" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P13"
+#NET dp_o_grp4<8>   LOC ="G15" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P15"
+#NET dp_o_grp4<9>   LOC ="E14" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P17"
+#NET dp_o_grp4<10>  LOC ="F15" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P19"
+#NET dp_o_grp4<11>  LOC ="B15" | IOSTANDARD = LVDS_25;  # "EXP1_DIFF_P21"
+
+# EXP Expansion Connector JX2
+
+# JX2 - Inputs: 36 Single-ended, 48 Differential (24 pairs)
+#NET se_i_grp1<0>   LOC ="V16"  | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_0"  
+#NET se_i_grp1<1>   LOC ="Y17"  | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_2"  
+#NET se_i_grp1<2>   LOC ="AA18" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_4"  
+#NET se_i_grp1<3>   LOC ="AC20" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_6"  
+#NET se_i_grp1<4>   LOC ="AA17" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_8"  
+#NET se_i_grp1<5>   LOC ="AC19" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_10" 
+#NET se_i_grp1<6>   LOC ="AB18" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_12" 
+#NET se_i_grp1<7>   LOC ="V15"  | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_14" 
+#NET se_i_grp1<8>   LOC ="W15"  | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_16" 
+#NET se_i_grp1<9>   LOC ="AB16" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_18" 
+#NET se_i_grp1<10>  LOC ="M21"  | IOSTANDARD = LVCMOS33; # "EXP2_SE_IO_20" 
+#NET se_i_grp1<11>  LOC ="AC16" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_22" 
+#NET se_i_grp1<12>  LOC ="U22"  | IOSTANDARD = LVCMOS33; # "EXP2_SE_IO_24" 
+#NET se_i_grp1<13>  LOC ="AC15" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_26" 
+#NET se_i_grp1<14>  LOC ="AA13" | IOSTANDARD = LVCMOS25; # "EXP2_DIFF_CLK_IN_P" 
+#NET se_i_grp1<15>  LOC ="Y13"  | IOSTANDARD = LVCMOS25; # "EXP2_DIFF_CLK_IN_N" 
+#NET se_i_grp1<16>  LOC ="V14"  | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_30" 
+#NET se_i_grp1<17>  LOC ="U15"  | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_31" 
+#NET se_i_grp1<18>  LOC ="AE25" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_1"  
+#NET se_i_grp1<19>  LOC ="AF25" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_3"  
+#NET se_i_grp1<20>  LOC ="AE23" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_5"  
+#NET se_i_grp1<21>  LOC ="AF23" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_7"  
+#NET se_i_grp1<22>  LOC ="AD22" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_9"  
+#NET se_i_grp1<23>  LOC ="AE21" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_11" 
+#NET se_i_grp1<24>  LOC ="AD21" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_13" 
+#NET se_i_grp1<25>  LOC ="AC21" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_15" 
+#NET se_i_grp1<26>  LOC ="U23"  | IOSTANDARD = LVCMOS33; # "EXP2_SE_IO_17" 
+#NET se_i_grp1<27>  LOC ="U24"  | IOSTANDARD = LVCMOS33; # "EXP2_SE_IO_19" 
+#NET se_i_grp1<28>  LOC ="AD20" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_21" 
+#NET se_i_grp1<29>  LOC ="AF19" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_23" 
+#NET se_i_grp1<30>  LOC ="AE19" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_25" 
+#NET se_i_grp1<31>  LOC ="AD19" | IOSTANDARD = LVCMOS25; # "EXP2_SE_IO_27" 
+
+#NET se_i_grp2<0>   LOC ="R20"  | IOSTANDARD = LVCMOS33; # "EXP2_SE_IO_28" 
+#NET se_i_grp2<1>   LOC ="AF13" | IOSTANDARD = LVCMOS25; # "EXP2_SE_CLK_IN"
+#NET se_i_grp2<2>   LOC ="R19"  | IOSTANDARD = LVCMOS33; # "EXP2_SE_IO_29"  
+#NET se_i_grp2<3>   LOC ="Y14"  | IOSTANDARD = LVCMOS25; # "EXP2_SE_CLK_OUT"
+#NET se_i_grp2<4>   LOC ="K23"  | IOSTANDARD = LVCMOS33; # "EXP2_SE_IO_32"  
+#NET se_i_grp2<5>   LOC ="M22"  | IOSTANDARD = LVCMOS33; # "EXP2_SE_IO_33"  
+# DIFF pair 10 is on "CC" I/O so have to make single-ended to be outputs
+#NET se_i_grp2<6>   LOC ="AE14" | IOSTANDARD = LVCMOS25; # "EXP2_DIFF_N10" 
+#NET se_i_grp2<7>   LOC ="AF14" | IOSTANDARD = LVCMOS25; # "EXP2_DIFF_P10"      
+
+#NET dp_i_grp3<0>   LOC ="AE6"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N0"       
+#NET dp_i_grp3<1>   LOC ="U11"  | IOSTANDARD = LVDS_25; # "EXP1_DIFF_N2" 
+#NET dp_i_grp3<2>   LOC ="Y9"   | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N4"  
+#NET dp_i_grp3<3>   LOC ="AA10" | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N6"  
+#NET dp_i_grp3<4>   LOC ="AC9"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N8"  
+#NET dp_i_grp3<5>   LOC ="AC11" | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N12" 
+#NET dp_i_grp3<6>   LOC ="W12"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N14" 
+#NET dp_i_grp3<7>   LOC ="V17"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_CLK_OUT_N"
+#NET dp_i_grp3<8>   LOC ="AA12" | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N16"      
+#NET dp_i_grp3<9>   LOC ="W13"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N18"      
+#NET dp_i_grp3<10>  LOC ="W10"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N20"      
+#NET dp_i_grp3<11>  LOC ="AF3"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N1"       
+#NET dp_i_grp3<12>  LOC ="AF4"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N3"       
+#NET dp_i_grp3<13>  LOC ="AB7"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N5"       
+#NET dp_i_grp3<14>  LOC ="AD6"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N7" 
+#NET dp_i_grp3<15>  LOC ="AE7"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N9"
+
+#NET dp_i_grp3<16>  LOC ="AF5"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P0"       
+#NET dp_i_grp3<17>  LOC ="V11"  | IOSTANDARD = LVDS_25; # "EXP1_DIFF_P2" 
+#NET dp_i_grp3<18>  LOC ="W9"   | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P4"       
+#NET dp_i_grp3<19>  LOC ="Y10"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P6"       
+#NET dp_i_grp3<20>  LOC ="AB9"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P8"       
+#NET dp_i_grp3<21>  LOC ="AD11" | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P12"      
+#NET dp_i_grp3<22>  LOC ="V12"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P14"      
+#NET dp_i_grp3<23>  LOC ="W17"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_CLK_OUT_P"
+#NET dp_i_grp3<24>  LOC ="Y12"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P16"      
+#NET dp_i_grp3<25>  LOC ="V13"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P18"      
+#NET dp_i_grp3<26>  LOC ="V10"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P20"      
+#NET dp_i_grp3<27>  LOC ="AE3"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P1"       
+#NET dp_i_grp3<28>  LOC ="AE4"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P3"       
+#NET dp_i_grp3<29>  LOC ="AC8"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P5"       
+#NET dp_i_grp3<30>  LOC ="AC6"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P7" 
+#NET dp_i_grp3<31>  LOC ="AD7"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P9" 
+
+#NET dp_i_grp4<0>   LOC ="AF8"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N11"
+#NET dp_i_grp4<1>   LOC ="AF9"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N13"
+#NET dp_i_grp4<2>   LOC ="AE20" | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N15" 
+#NET dp_i_grp4<3>   LOC ="AD17" | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N17" 
+#NET dp_i_grp4<4>   LOC ="AC12" | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N19"
+#NET dp_i_grp4<5>   LOC ="AC14" | IOSTANDARD = LVDS_25; # "EXP2_DIFF_N21"
+
+#NET dp_i_grp4<6>   LOC ="AE8"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P11"
+#NET dp_i_grp4<7>   LOC ="AE9"  | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P13"
+#NET dp_i_grp4<8>   LOC ="AF20" | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P15" 
+#NET dp_i_grp4<9>   LOC ="AE17" | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P17" 
+#NET dp_i_grp4<10>  LOC ="AB12" | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P19"
+#NET dp_i_grp4<11>  LOC ="AD14" | IOSTANDARD = LVDS_25; # "EXP2_DIFF_P21"
+
+#INST "jx1_to_jx2/jx1_to_jx2/nextbus_block/dp_i_grp3_ibufds*" DIFF_TERM = TRUE;
+#INST "jx1_to_jx2/jx1_to_jx2/nextbus_block/dp_i_grp4_ibufds*" DIFF_TERM = TRUE;
+
+#### DAC out
+#NET "CLK_25_175MHZ" LOC ="P26" | IOSTANDARD = LVCMOS33;
+#NET "DAC_HSYNC"     LOC ="K26" | IOSTANDARD = LVCMOS33;
+#NET "DAC_VSYNC"     LOC ="K25" | IOSTANDARD = LVCMOS33;
+#NET "DAC_RGB<0>"    LOC ="L22" | IOSTANDARD = LVCMOS33;
+#NET "DAC_RGB<1>"    LOC ="K21" | IOSTANDARD = LVCMOS33;
+#NET "DAC_RGB<2>"    LOC ="G23" | IOSTANDARD = LVCMOS33;
+#NET "DAC_RGB<3>"    LOC ="G24" | IOSTANDARD = LVCMOS33;
+#NET "DAC_RGB<4>"    LOC ="M19" | IOSTANDARD = LVCMOS33;
+#NET "DAC_RGB<5>"    LOC ="M18" | IOSTANDARD = LVCMOS33;
+#NET "DAC_RGB<6>"    LOC ="J23" | IOSTANDARD = LVCMOS33;
+#NET "DAC_RGB<7>"    LOC ="J22" | IOSTANDARD = LVCMOS33;
+#NET "DAC_RGB<8>"    LOC ="L20" | IOSTANDARD = LVCMOS33;
+#NET "DAC_RGB<9>"    LOC ="K20" | IOSTANDARD = LVCMOS33;
+#NET "DAC_RGB<10>"   LOC ="F25" | IOSTANDARD = LVCMOS33;
+#NET "DAC_RGB<11>"   LOC ="F24" | IOSTANDARD = LVCMOS33;
+
+#### Module SysACE_CompactFlash constraints
+
+#Net fpga_0_SysACE_CompactFlash_SysACE_CLK_pin LOC = AA14   | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_CLK_pin TNM_NET = sysace_clk;
+#TIMESPEC TS_sysace_clk = PERIOD sysace_clk 41667 ps;
+
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPA_pin<0>  LOC = AC26   | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPA_pin<1>  LOC = AB26   | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPA_pin<2>  LOC = AB23   | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPA_pin<3>  LOC = AB24   | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPA_pin<4>  LOC = V18    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPA_pin<5>  LOC = V19    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPA_pin<6>  LOC = AA22   | IOSTANDARD = LVCMOS33;
+                                           
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPD_pin<0>  LOC = AA23   | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPD_pin<1>  LOC = V21    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPD_pin<2>  LOC = U20    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPD_pin<3>  LOC = AA24   | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPD_pin<4>  LOC = AA25   | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPD_pin<5>  LOC = U19    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPD_pin<6>  LOC = U18    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPD_pin<7>  LOC = Y22    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPD_pin<8>  LOC = Y23    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPD_pin<9>  LOC = U21    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPD_pin<10> LOC = T20    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPD_pin<11> LOC = Y24    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPD_pin<12> LOC = Y25    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPD_pin<13> LOC = T18    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPD_pin<14> LOC = T17    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_MPD_pin<15> LOC = W23    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_CEN_pin     LOC = V25    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_OEN_pin     LOC = V22    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_WEN_pin     LOC = V24    | IOSTANDARD = LVCMOS33;
+#Net fpga_0_SysACE_CompactFlash_SysACE_RST_pin     LOC = V23    | IOSTANDARD = LVCMOS33;
+
+# Steal some pins off J8 (System Ace header) for debug connections to ORSoC debug cable
+
+
+NET uart0_srx_expheader_pad_i  LOC = AA25; # J8 Pin 25, "D04"
+NET uart0_srx_expheader_pad_i TIG;
+NET uart0_srx_expheader_pad_i PULLUP;
+NET uart0_srx_expheader_pad_i IOSTANDARD = LVTTL;
+
+NET uart0_stx_expheader_pad_o  LOC = U19; # J8 Pin 28, "D05"
+NET uart0_stx_expheader_pad_o TIG;
+NET uart0_stx_expheader_pad_o PULLUP;
+NET uart0_stx_expheader_pad_o IOSTANDARD = LVTTL;
+
+NET tdo_pad_o  LOC = AA23; # J8 Pin 21, "D0"
+NET tdi_pad_i  LOC = V21 ; # J8 Pin 24, "D1"
+NET tms_pad_i  LOC = U20 ; # J8 Pin 23, "D2"
+NET tck_pad_i  LOC = AA24; # J8 Pin 26, "D3"
+
+NET tdo_pad_o  TIG; NET tdo_pad_o  PULLUP; NET tdo_pad_o  IOSTANDARD = LVTTL;
+NET tdi_pad_i  TIG; NET tdi_pad_i  PULLUP; NET tdi_pad_i  IOSTANDARD = LVTTL;
+NET tms_pad_i  TIG; NET tms_pad_i  PULLUP; NET tms_pad_i  IOSTANDARD = LVTTL;
+NET tck_pad_i  TIG; NET tck_pad_i  PULLUP; NET tck_pad_i  IOSTANDARD = LVTTL;
+# Overide the following mapping error: 
+# ERROR:Place:645 - A clock IOB clock component is not placed at an optimal clock
+# IOB site.
+NET "tck_pad_i" CLOCK_DEDICATED_ROUTE = FALSE;
+NET  tck_pad_i TNM_NET = tck_pad_i;
+TIMESPEC TS_tck_pad_i = PERIOD tck_pad_i 40 ns;
+
+
+# SPI
+
+NET spi0_mosi_o  LOC = AB15  | IOSTANDARD = LVCMOS33 | DRIVE = 6 | SLEW = FAST | TIG;
+NET spi0_ss_o<0> LOC = AA7 | IOSTANDARD = LVCMOS33 | DRIVE = 6 | SLEW = FAST | TIG;
+NET spi0_miso_i  LOC = AF24 | IOSTANDARD = LVCMOS33 | DRIVE = 6 | SLEW = FAST | TIG;
+NET spi0_sck_o   LOC = AE24 | IOSTANDARD = LVCMOS33 | DRIVE = 6 | SLEW = FAST | TIG;

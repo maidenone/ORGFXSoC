@@ -1,0 +1,95 @@
+/dts-v1/;
+/ {
+	compatible = "digilent,atlys";
+	#size-cells = <1>;
+	#address-cells = <1>;
+
+	chosen {
+	};
+
+	memory@0 {
+		device_type = "memory";
+		reg = <0x00000000 0x08000000>;
+	};
+
+	cpus {
+		cpu@0 {
+			compatible = "opencores,openrisc-1200";
+			clock-frequency = <50000000>;
+		};
+	};
+
+	/* The "soc" node */
+
+	soc {
+		/* Every node with children must specify address-cells and
+		   size-cells; they are not inherited */
+		#address-cells = <1>;
+		#size-cells = <1>;
+		device_type = "soc";
+
+		/* This is also a 1:1 mapping but limits size of mappable
+		   region to 0x40000000 */
+		ranges = <0x80000000 0x80000000 0x40000000>;
+
+		/* An alternative is to specify an empty ranges here to
+		   indicates 1:1 mapping of SOC addresses (device addresses)
+		   to CPU addresses */
+		/*ranges;*/
+
+		/* This SOC has only a single, implicit PIC, so define it
+		   early and put the interrupt-parent property in the 'soc'
+		   node so that it's inherited by all the children using
+		   interrupts.
+		*/
+		interrupt-parent = <&pic>;
+
+		/* Devices with interrupts need a 'parent', so we need to
+		   define a controller */
+		pic: pic@0 {
+			compatible = "opencores,or1k-pic";
+			#interrupt-cells = <1>;
+			interrupt-controller;
+		};
+
+		serial0: serial@90000000 {
+			/* FIXME: device_type is still needed here...
+			   should remove requirement from of_serial driver */
+			device_type = "serial";
+			compatible = "opencores,uart", "ns16550a";
+			reg = <0x90000000 0x100>;
+			interrupts = <2>;
+			clock-frequency = <50000000>;
+		};
+
+		enet0: ethoc@92000000 {
+			compatible = "opencores,ethoc", "ethoc";
+			reg = <0x92000000 0x53>;
+			interrupts = <4>;
+			local-mac-address = [02 de ad be ef 02];
+		};
+
+		fb0: ocfb@97000000 {
+			compatible = "opencores,ocfb", "ocfb";
+			reg = <0x97000000 0x1000>;
+		};
+
+		ps2_0: ocps2@94000000 {
+			compatible = "opencores,ocps2", "ocps2";
+			reg = <0x94000000 0x2>;
+			interrupts = <5>;
+		};
+/*
+		ps2_1: ocps2@95000000 {
+			compatible = "opencores,ocps2", "ocps2";
+			reg = <0x95000000 0x2>;
+			interrupts = <13>;
+		};
+*/		
+		ac97: ocac97@93000000 {
+			compatible = "opencores,ac97", "ocac97";
+			reg = <0x93000000 0x40>;
+			interrupts = <12>;
+		};
+	};
+};

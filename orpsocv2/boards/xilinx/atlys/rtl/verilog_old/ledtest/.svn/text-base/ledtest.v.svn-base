@@ -1,0 +1,31 @@
+`timescale 1ns / 1ps
+//////////////////////////////////////////////////////////////////////////////////
+// Company: 
+// Engineer: 
+// 
+// Create Date:    10:10:20 01/26/2012 
+// Design Name: 
+// Module Name:    test 
+// Project Name: 
+// Target Devices: 
+// Tool versions: 
+// Description: 
+//
+// Dependencies: 
+//
+// Revision: 
+// Revision 0.01 - File Created
+// Additional Comments: 
+//
+//////////////////////////////////////////////////////////////////////////////////
+module ledtest(
+    sw,	// input switch
+    led	// output led
+    );
+
+input sw;
+output led;
+
+assign led = sw;
+
+endmodule

@@ -1,0 +1,23 @@
+Actel Verilog RTL files
+
+The files in this directory are Actel specific RTL
+
+These are all, at present, wrappers for Actel primitives. Most, if not all, were
+generated with Actel's smartgen tool
+
+eth_pll.v:	 
+		 PLL for the 125MHz ethernet clock on the ORDB1 with as little
+		 insertion delay as possible.
+
+gbuf.v:		 
+		 Buffer for clocks (used in clkgen module)
+
+pll_xtalXX_wbYY:
+		PLL taking external oscillator at XX MHz and generating Wishbone
+		clock at frequency YY.
+
+reset_buffer.v:
+		Buffer for reset (used in clkgen module)
+
+orpsoc_flashROM.v:
+		Instantiation of UFR.

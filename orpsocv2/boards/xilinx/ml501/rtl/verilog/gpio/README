@@ -1,0 +1,7 @@
+GPIO RTL
+
+This is a simple GPIO implementation. It is variable width, however widths of 
+multiples of 8 are advised. The first width/8 bytes control are for 
+reading/writing to the GPIO registers, the second set of width/8 bytes control 
+the direction.
+

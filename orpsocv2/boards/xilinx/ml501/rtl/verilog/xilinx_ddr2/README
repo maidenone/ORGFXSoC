@@ -1,0 +1,17 @@
+Xilinx DDR2 controller with Wishbone interface
+
+This is a Xilinx technology-dependent DDR2 memory controller, based on a 
+controller from Xilinx's memory interface generator (MIG), with a small cache
+memory and Wishbone wrapper.
+
+The xilinx_ddr2_wb_if.v is a 3-master arbiter for the controller.
+The xilinx_ddr2_if.v is the actual interface between the Wishbone bus and 
+Xilinx MIG control interface.
+
+When synthesizing, take note of the xilinx_ddr2_if_cache module, that is a 
+dual-port memory, with different aspects on each size, and cannot be inferred. 
+The NGC should be in the appropriate place in the synthesis or backend 
+directories.
+
+Wishbone B3-compliant bursting is yet to be implemented.
+

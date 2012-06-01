@@ -1,0 +1,150 @@
+@numchapentry{Introduction}{1}{Document Introduction}{1}
+@numchapentry{Project Organisation}{2}{Project Organisation}{2}
+@numsecentry{Organisation Overview}{2.1}{Organisation Overview}{2}
+@numsecentry{Software}{2.2}{Software Organisation}{2}
+@numsubsecentry{Software Test Naming}{2.2.1}{Software Test Naming}{3}
+@numsecentry{RTL}{2.3}{RTL Organisation}{3}
+@numsubsecentry{Verilog HDL}{2.3.1}{}{3}
+@numsecentry{Testbench}{2.4}{Testbench Organisation}{3}
+@numsecentry{Reference And Board Designs}{2.5}{Organisation of Reference And Board Designs}{3}
+@numsubsecentry{Module Selection}{2.5.1}{}{3}
+@numchapentry{Getting Started}{3}{Getting Started}{5}
+@numsecentry{Supported Host Platforms}{3.1}{Getting Started Supported Platforms}{5}
+@numsecentry{Obtaining Project Source}{3.2}{Getting Started Obtaining Project Source}{5}
+@numsecentry{Required Tools}{3.3}{Getting Started Required Tools}{5}
+@numchapentry{Reference Design}{4}{Reference Design}{6}
+@numsecentry{Overview}{4.1}{Reference Design Overview}{6}
+@numsecentry{Structure}{4.2}{Reference Design Structure}{6}
+@numsubsecentry{RTL}{4.2.1}{Reference Design RTL}{6}
+@numsubsecentry{Software}{4.2.2}{Reference Design Software}{7}
+@numsubsecentry{Simulation}{4.2.3}{Reference Design Simulation}{7}
+@numsecentry{Tools}{4.3}{Reference Design Tools}{7}
+@numsubsecentry{Host Tools}{4.3.1}{Reference Design Host Tools}{7}
+@numsubsecentry{Target System Tools}{4.3.2}{Reference Design Target System Tools}{7}
+@numsubsecentry{EDA Tools}{4.3.3}{Reference Design EDA Tools}{7}
+@numsubsecentry{Debug Tools}{4.3.4}{Reference Design Debug Tools}{7}
+@numsecentry{Simulation}{4.4}{Reference Design Simulation Instructions}{7}
+@numsubsecentry{RTL}{4.4.1}{Reference Design RTL Simulation}{7}
+@numsubsecentry{Cycle Accurate}{4.4.2}{Reference Design Cycle Accurate}{9}
+@numsubsecentry{Results}{4.4.3}{Reference Design Results}{10}
+@numsecentry{Synthesis}{4.5}{Reference Design Synthesis}{11}
+@numchapentry{ORDB1A3PE1500}{5}{ORDB1A3PE1500}{12}
+@numsecentry{Overview}{5.1}{ORDB1A3PE1500 Overview}{12}
+@numsecentry{Structure}{5.2}{ORDB1A3PE1500 Structure}{12}
+@numsecentry{Tools}{5.3}{ORDB1A3PE1500 Tools}{12}
+@numsubsecentry{Host Tools}{5.3.1}{ORDB1A3PE1500 Host Tools}{12}
+@numsubsecentry{Target System Tools}{5.3.2}{ORDB1A3PE1500 Target System Tools}{12}
+@numsubsecentry{EDA Tools}{5.3.3}{ORDB1A3PE1500 EDA Tools}{12}
+@numsubsecentry{Debug Tools}{5.3.4}{ORDB1A3PE1500 Debug Tools}{13}
+@numsecentry{Simulating}{5.4}{ORDB1A3PE1500 Simulating}{13}
+@numsecentry{Synthesis}{5.5}{ORDB1A3PE1500 Synthesis}{13}
+@numsubsecentry{Options}{5.5.1}{ORDB1A3PE1500 Synthesis Options}{13}
+@numsubsecentry{Checks}{5.5.2}{ORDB1A3PE1500 Synthesis Warnings}{14}
+@numsecentry{Place and Route}{5.6}{ORDB1A3PE1500 Place and Route}{14}
+@numsubsecentry{Options}{5.6.1}{ORDB1A3PE1500 Place and route options}{15}
+@numsubsecentry{Constraints}{5.6.2}{ORDB1A3PE1500 Constraints}{15}
+@numsecentry{Programming File Generation}{5.7}{ORDB1A3PE1500 Programming File Generation}{16}
+@numsecentry{Customising}{5.8}{ORDB1A3PE1500 Customising}{16}
+@numsubsecentry{Enabling Existing RTL Modules}{5.8.1}{ORDB1A3PE1500 Customising Enabling Existing Modules}{16}
+@numsubsecentry{Adding RTL Modules}{5.8.2}{ORDB1A3PE1500 Customising Adding Modules}{16}
+@numchapentry{ML501}{6}{ML501}{19}
+@numsecentry{Overview}{6.1}{ML501 Overview}{19}
+@numsecentry{Structure}{6.2}{ML501 Structure}{19}
+@numsubsecentry{ML501 Xilinx Environment Setup}{6.2.1}{ML501 Xilinx Environment Setup}{20}
+@numsecentry{Tools}{6.3}{ML501 Tools}{20}
+@numsubsecentry{Host Tools}{6.3.1}{ML501 Host Tools}{20}
+@numsubsecentry{Target System Tools}{6.3.2}{ML501 Target System Tools}{20}
+@numsubsecentry{EDA Tools}{6.3.3}{ML501 EDA Tools}{20}
+@numsubsecentry{Debug Tools}{6.3.4}{ML501 Debug Tools}{20}
+@numsecentry{Simulating}{6.4}{ML501 Simulating}{20}
+@numsubsecentry{Simulating Boot From Flash}{6.4.1}{ML501 Simulating Boot From Flash}{21}
+@numsubsubsecentry{Configure the design}{6.4.1.1}{}{21}
+@numsubsubsecentry{Prepare the image}{6.4.1.2}{}{21}
+@numsubsubsecentry{Run the simulation}{6.4.1.3}{}{21}
+@numsecentry{Synthesis}{6.5}{ML501 Synthesis}{21}
+@numsubsecentry{Options}{6.5.1}{ML501 Synthesis Options}{22}
+@numsubsecentry{Checks}{6.5.2}{ML501 Synthesis Warnings}{22}
+@numsubsecentry{Netlist generation}{6.5.3}{ML501 Synthesised Netlist}{22}
+@numsecentry{Place and Route}{6.6}{ML501 Place and Route}{22}
+@numsecentry{Post-PAR STA Report}{6.7}{ML501 Timing Report}{22}
+@numsecentry{Back-annotated Netlist}{6.8}{ML501 Back-annotated Netlist}{22}
+@numsubsecentry{Options}{6.8.1}{ML501 Place and route options}{23}
+@numsubsecentry{Constraints}{6.8.2}{ML501 Constraints}{23}
+@numsecentry{Programming File Generation}{6.9}{ML501 Programming File Generation}{23}
+@numsubsecentry{SPI programming file generation}{6.9.1}{ML501 SPI programming file}{23}
+@numsubsecentry{SPI programming file generation with software}{6.9.2}{ML501 SPI programming file with software}{23}
+@numsubsecentry{SPI flash programming}{6.9.3}{ML501 SPI flash programming}{24}
+@numsubsubsecentry{Direct SPI flash programming}{6.9.3.1}{ML501 Direct SPI flash programming}{24}
+@numsubsubsecentry{Indirect SPI flash programming}{6.9.3.2}{ML501 Inirect SPI flash programming}{25}
+@numsubsecentry{platform flash programming file generation}{6.9.4}{ML501 platform flash programming file}{25}
+@numsecentry{Customising}{6.10}{ML501 Customising}{25}
+@numsubsecentry{Enabling Flash Boot Configuration}{6.10.1}{ML501 boot from flash configuration}{26}
+@numsubsecentry{Enabling Existing RTL Modules}{6.10.2}{ML501 Customising Enabling Existing Modules}{26}
+@numsubsecentry{Adding RTL Modules}{6.10.3}{ML501 Customising Adding Modules}{26}
+@numsecentry{Running And Debugging Software}{6.11}{ML501 Running And Debugging Software}{27}
+@numsubsecentry{Debug Interface}{6.11.1}{ML501 Debug Interface}{27}
+@numsubsecentry{UART}{6.11.2}{ML501 UART}{28}
+@numchapentry{S3ADSP1800}{7}{S3ADSP1800}{29}
+@numsecentry{Overview}{7.1}{S3ADSP1800 Overview}{29}
+@numsecentry{Structure}{7.2}{S3ADSP1800 Structure}{29}
+@numsubsecentry{S3ADSP1800 Xilinx Environment Setup}{7.2.1}{S3ADSP1800 Xilinx Environment Setup}{29}
+@numsecentry{Tools}{7.3}{S3ADSP1800 Tools}{29}
+@numsubsecentry{Host Tools}{7.3.1}{S3ADSP1800 Host Tools}{29}
+@numsubsecentry{Target System Tools}{7.3.2}{S3ADSP1800 Target System Tools}{29}
+@numsubsecentry{EDA Tools}{7.3.3}{S3ADSP1800 EDA Tools}{30}
+@numsubsecentry{Debug Tools}{7.3.4}{S3ADSP1800 Debug Tools}{30}
+@numsecentry{Simulating}{7.4}{S3ADSP1800 Simulating}{30}
+@numsecentry{Synthesis}{7.5}{S3ADSP1800 Synthesis}{30}
+@numsubsecentry{Options}{7.5.1}{S3ADSP1800 Synthesis Options}{30}
+@numsubsecentry{Checks}{7.5.2}{S3ADSP1800 Synthesis Warnings}{31}
+@numsubsecentry{Netlist generation}{7.5.3}{S3ADSP1800 Synthesised Netlist}{31}
+@numsecentry{Place and Route}{7.6}{S3ADSP1800 Place and Route}{31}
+@numsecentry{Post-PAR STA Report}{7.7}{S3ADSP1800 Timing Report}{31}
+@numsecentry{Back-annotated Netlist}{7.8}{S3ADSP1800 Back-annotated Netlist}{31}
+@numsubsecentry{Options}{7.8.1}{S3ADSP1800 Place and route options}{31}
+@numsubsecentry{Constraints}{7.8.2}{S3ADSP1800 Constraints}{31}
+@numsecentry{Programming File Generation}{7.9}{S3ADSP1800 Programming File Generation}{32}
+@numsubsecentry{SPI flash programming}{7.9.1}{S3ADSP1800 SPI flash programming}{32}
+@numsecentry{Customising}{7.10}{S3ADSP1800 Customising}{32}
+@numsubsecentry{Enabling Existing RTL Modules}{7.10.1}{S3ADSP1800 Customising Enabling Existing Modules}{32}
+@numsubsecentry{Adding RTL Modules}{7.10.2}{S3ADSP1800 Customising Adding Modules}{33}
+@numsecentry{Running And Debugging Software}{7.11}{S3ADSP1800 Running And Debugging Software}{34}
+@numsubsecentry{Debug Interface}{7.11.1}{S3ADSP1800 Debug Interface}{34}
+@numsubsecentry{UART}{7.11.2}{S3ADSP1800 UART}{34}
+@numchapentry{Atlys}{8}{Atlys}{35}
+@numsecentry{Overview}{8.1}{Atlys Overview}{35}
+@numsecentry{Structure}{8.2}{Atlys Structure}{35}
+@numsubsecentry{Atlys Xilinx Environment Setup}{8.2.1}{Atlys Xilinx Environment Setup}{35}
+@numsecentry{Tools}{8.3}{Atlys Tools}{35}
+@numsubsecentry{Host Tools}{8.3.1}{Atlys Host Tools}{35}
+@numsubsecentry{Target System Tools}{8.3.2}{Atlys Target System Tools}{35}
+@numsubsecentry{EDA Tools}{8.3.3}{Atlys EDA Tools}{35}
+@numsubsecentry{Debug Tools}{8.3.4}{Atlys Debug Tools}{35}
+@numsecentry{Simulating}{8.4}{Atlys Simulating}{36}
+@numsecentry{Synthesis}{8.5}{Atlys Synthesis}{36}
+@numsubsecentry{Options}{8.5.1}{Atlys Synthesis Options}{36}
+@numsubsecentry{Checks}{8.5.2}{Atlys Synthesis Warnings}{36}
+@numsubsecentry{Netlist generation}{8.5.3}{Atlys Synthesised Netlist}{37}
+@numsecentry{Place and Route}{8.6}{Atlys Place and Route}{37}
+@numsecentry{Post-PAR STA Report}{8.7}{Atlys Timing Report}{37}
+@numsecentry{Back-annotated Netlist}{8.8}{Atlys Back-annotated Netlist}{37}
+@numsubsecentry{Options}{8.8.1}{Atlys Place and route options}{37}
+@numsubsecentry{Constraints}{8.8.2}{Atlys Constraints}{37}
+@numsecentry{Programming File Generation}{8.9}{Atlys Programming File Generation}{37}
+@numchapentry{Generic Designs}{9}{Generic Designs}{38}
+@numsecentry{Overview}{9.1}{Generic Build Overview}{38}
+@numchapentry{Software}{10}{Software}{39}
+@numsecentry{Overview}{10.1}{Software Overview}{39}
+@numsecentry{Components}{10.2}{Software Components}{39}
+@numsubsecentry{Applications}{10.2.1}{Software Components Applications}{39}
+@numsubsecentry{Drivers}{10.2.2}{Software Components Drivers}{39}
+@numsubsecentry{CPU Drivers}{10.2.3}{Software Components CPU Drivers}{39}
+@numsubsecentry{Tests}{10.2.4}{Software Components Tests}{40}
+@numsubsecentry{Library}{10.2.5}{Software Components Library}{40}
+@numsubsecentry{Board}{10.2.6}{Software Components Board}{40}
+@numsubsecentry{Utilities}{10.2.7}{Software Components Utilities}{40}
+@numsecentry{Software For Board Ports}{10.3}{Software For Board Ports}{40}
+@numchapentry{EDA tool notes}{11}{EDA tool notes}{42}
+@numsecentry{Xilinx Environment Setup}{11.1}{Xilinx Environment Setup}{42}
+@numchapentry{GNU Free Documentation License}{12}{GNU Free Documentation License}{43}
+@unnchapentry{Index}{10001}{Index}{50}

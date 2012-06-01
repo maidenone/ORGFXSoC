@@ -1,0 +1,72 @@
+		SPI flash programming application
+
+This software will be compiled and have another application embedded in it, 
+which will then be programmed into a flash memory via the SPI protocol.
+
+At present, only the simple_spi core communicating with the M25P10 serial flash
+memory via SPI is supported (the config on ORSoC FPGA board)
+
+First, compile the program to be put into flash, and generate a binary image of
+it.
+
+The bootloader program that loads programs from the SPI flash, at reset, reads
+out the first 4 bytes (32-bit word) from the flash and expects this to contain 
+the length of the image in bytes. It then enters a loop for this many bytes
+and copies them to the SDRAM, before jumping to the reset vector in SDRAM.
+
+This means the image programed into the SPI flash must contain its size at the
+first word, and the remainder of the image must be correctly aligned so that
+the reset vector is at address 0x100 after being loaded.
+
+Included with this software package is a tool which will take a binary 
+application and embed its size in the first word. The makefile then takes this
+altered binary image, and convert it into an object file with the appropriate
+section name, and is linked into the final application by a custom linker 
+script also included in this path.
+
+First the program to be loaded into the flash memory should be compiled. It 
+should be, of course, tested on the board first, before being loaded into the 
+flash. Once the program is tested on the board, the ELF can be taken and 
+objcopy'd to a binary image. It should be noted that the image should be 
+addressed from 0, and the vectors should be correctly located.
+
+Convert to the ELF to raw binary with:
+
+$ or32-elf-objcopy -O binary myapp.elf myapp.bin
+
+Now, the spiflash-program.elf program should be compiled, and the environment
+variable PROGRAMMINGFILE should be set to point to myapp.bin, the binary 
+version of the program we are to load into the flash memory.
+
+To ensure the correct settings for UART and other peripherals are picked up 
+ensure the BOARD_PATH variable is set correctly, too.
+
+       make spiflash-program.elf PROGRAMMINGFILE=/path/to/myapp.bin \
+            BOARD=actel/ordb1a3pe1500
+
+It's advisable to do a "make distclean" first, to clear out any previously 
+compiled software for other boards.
+
+The steps to embed the size of the program in the binary and then link it 
+into the final executable are all done automatically by the Makefile.
+
+Finally, spiflash-program.elf should be loaded onto the board and executed. A
+small prompt should come up, pressing 'h' will explain the options, 'p' will
+do the programming (and verification of the image) and 'v' will verify the 
+image again.
+
+Warning:
+Note that in the flash on the ORSoC dev board, there appears to be 3 pages, 
+either pages 130-132 or pages 180-182 which do not provide reliable data when
+read from. The cause of this is unknown. If this is a big problem, be sure that
+no vital information is stored on those pages.
+
+And of course, be sure that the program being loaded fits into the SPI flash.
+
+Once the flash memory is programmed, and if the design is configured with the
+SPI flash bootloader, resetting the target should cause the new application to
+be executed.
+
+Author: Julius Baxter, julius.baxter@orsoc.se
+
+

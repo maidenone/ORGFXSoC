@@ -1,0 +1,422 @@
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdfetex 2011.12.6)  27 JAN 2012 14:16
+entering extended mode
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**\nonstopmode \catcode126=12 \def\normaltilde{~}\catcode126=13 \let~\normaltil
+de  \input ./orpsoc.texi
+(./orpsoc.texi (./texinfo.tex Loading texinfo [version 2009-05-16.16]:
+\bindingoffset=\dimen16
+\normaloffset=\dimen17
+\pagewidth=\dimen18
+\pageheight=\dimen19
+\outerhsize=\dimen20
+\outervsize=\dimen21
+\cornerlong=\dimen22
+\cornerthick=\dimen23
+\topandbottommargin=\dimen24
+\headlinebox=\box16
+\footlinebox=\box17
+\margin=\insert252
+\EMsimple=\toks13
+\groupbox=\box18
+\groupinvalidhelp=\toks14
+\mil=\dimen25
+\exdentamount=\skip18
+\inmarginspacing=\skip19
+ pdf,
+\tempnum=\count27
+\lnkcount=\count28
+\filename=\toks15
+\filenamelength=\count29
+\pgn=\count30
+\toksA=\toks16
+\toksB=\toks17
+\toksC=\toks18
+\toksD=\toks19
+\boxA=\box19
+\countA=\count31
+\nopdfimagehelp=\toks20
+
+fonts,
+\sffam=\fam8
+\textleading=\dimen26
+ markup,
+\fontdepth=\count32
+ glyphs,
+\errorbox=\box20
+ page headings,
+\titlepagetopglue=\skip20
+\titlepagebottomglue=\skip21
+\evenheadline=\toks21
+\oddheadline=\toks22
+\evenfootline=\toks23
+\oddfootline=\toks24
+ tables,
+\tableindent=\dimen27
+\itemindent=\dimen28
+\itemmargin=\dimen29
+\itemmax=\dimen30
+\itemno=\count33
+\multitableparskip=\skip22
+\multitableparindent=\skip23
+\multitablecolspace=\dimen31
+\multitablelinespace=\skip24
+\colcount=\count34
+\everytab=\toks25
+ conditionals,
+\doignorecount=\count35
+ indexing,
+\whatsitskip=\skip25
+\whatsitpenalty=\count36
+\secondaryindent=\skip26
+\partialpage=\box21
+\doublecolumnhsize=\dimen32
+
+sectioning,
+\unnumberedno=\count37
+\chapno=\count38
+\secno=\count39
+\subsecno=\count40
+\subsubsecno=\count41
+\appendixno=\count42
+\absseclevel=\count43
+\secbase=\count44
+\chapheadingskip=\skip27
+\secheadingskip=\skip28
+\subsecheadingskip=\skip29
+ toc,
+\tocfile=\write0
+\contentsrightmargin=\skip30
+\savepageno=\count45
+\lastnegativepageno=\count46
+\tocindent=\dimen33
+ environments,
+\lispnarrowing=\skip31
+\envskipamount=\skip32
+\circthick=\dimen34
+\cartouter=\dimen35
+\cartinner=\dimen36
+\normbskip=\skip33
+\normpskip=\skip34
+\normlskip=\skip35
+\lskip=\skip36
+\rskip=\skip37
+\nonfillparindent=\dimen37
+\tabw=\dimen38
+ defuns,
+\defbodyindent=\skip38
+\defargsindent=\skip39
+\deflastargmargin=\skip40
+\defunpenalty=\count47
+\parencount=\count48
+\brackcount=\count49
+ macros,
+\paramno=\count50
+\macname=\toks26
+ cross references,
+\auxfile=\write1
+\savesfregister=\count51
+ insertions,
+\footnoteno=\count52
+\SAVEfootins=\box22
+\SAVEmargin=\box23
+
+(/usr/share/texmf-texlive/tex/generic/epsf/epsf.tex
+This is `epsf.tex' v2.7.3 <23 July 2005>
+\epsffilein=\read1
+\epsfframemargin=\dimen39
+\epsfframethickness=\dimen40
+\epsfrsize=\dimen41
+\epsftmp=\dimen42
+\epsftsize=\dimen43
+\epsfxsize=\dimen44
+\epsfysize=\dimen45
+\pspoints=\dimen46
+)
+\noepsfhelp=\toks27
+ localization,
+\nolanghelp=\toks28
+\countUTFx=\count53
+\countUTFy=\count54
+\countUTFz=\count55
+ formatting,
+\defaultparindent=\dimen47
+ and turning on texinfo input format.) (./orpsoc.aux)
+\openout1 = `orpsoc.aux'.
+
+@cpindfile=@write2
+@fnindfile=@write3
+@vrindfile=@write4
+@tpindfile=@write5
+@kyindfile=@write6
+@pgindfile=@write7
+ (./config.texi) [1
+\openout2 = `orpsoc.cp'.
+
+\openout3 = `orpsoc.fn'.
+
+\openout4 = `orpsoc.vr'.
+
+\openout5 = `orpsoc.tp'.
+
+\openout6 = `orpsoc.ky'.
+
+\openout7 = `orpsoc.pg'.
+
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+[2] (./orpsoc.toc [-1] [-2] [-3]) [-4] (./orpsoc.toc) (./orpsoc.toc) Chapter 1
+\openout0 = `orpsoc.toc'.
+
+
+Chapter 2 [1] [2] Chapter 3 [3] [4] Chapter 4 [5] [6]
+Underfull \hbox (badness 2799) in paragraph at lines 295--296
+[]@textrm A min-i-mal set of drivers is built into @texttt liborpsoc[]@textrm ,
+ and they are found un-der
+
+@hbox(7.60416+2.43333)x433.62, glue set 3.03798
+.@hbox(0.0+0.0)x0.0
+.@textrm A
+.@glue 3.65 plus 1.82317 minus 1.21786
+.@textrm m
+.@textrm i
+.etc.
+
+[7]
+Underfull \hbox (badness 10000) in paragraph at lines 417--419
+ @texttt VCD[]@textrm Set to '1' to en-able @textit value change dump @textrm (
+VCD) cre-ation in
+
+@hbox(8.2125+2.73749)x433.62, glue set 5.48106
+.@glue(@leftskip) 57.81621
+.@penalty 10000
+.@kern -57.81621
+.@texttt V
+.@texttt C
+.etc.
+
+[8] [9] [10] Chapter 5 [11] [12] [13] [14] [15]
+Overfull \hbox (29.32039pt too wide) in paragraph at lines 866--867
+[]@textrm The rest are op-tional, de-pend-ing on what is de-fined in the board'
+s @texttt rtl/verilog/include/orpsoc-|
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@hbox(0.0+0.0)x0.0
+.@textrm T
+.@textrm h
+.@textrm e
+.@glue 3.65 plus 1.825 minus 1.21666
+.etc.
+
+
+Underfull \hbox (badness 2012) in paragraph at lines 890--891
+ []@textrm Instantiate the mod-ule in the ORP-SoC top level file, @texttt rtl/v
+erilog/orpsoc_
+
+@hbox(7.60416+2.43333)x433.62, glue set 2.72142
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@textrm I
+.@textrm n
+.@textrm s
+.etc.
+
+[16]
+Overfull \hbox (32.01567pt too wide) in paragraph at lines 897--898
+ []@textrm Attach ap-pro-pri-ate clocks and re-sets, mod-ify the board's @textt
+t rtl/verilog/clkgen/clkgen.v[]|
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@glue(@leftskip) 43.36243
+.@hbox(4.86667+0.0)x0.0, glue set - 12.70244fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@mathon
+..@textsy ^^O
+..@mathoff
+..@kern 7.22743
+.@textrm A
+.@kern-0.30418
+.@textrm t
+.etc.
+
+[17] Chapter 6 [18] [19] [20] [21] [22] [23] [24]
+Overfull \hbox (150.67148pt too wide) in paragraph at lines 1303--1304
+[]@textrm The fol-low-ing page has more in-for-ma-tion about the steps re-quire
+d. [][]@texttt http://www.xilinx.com/support/documentation/sw_|
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@hbox(0.0+0.0)x0.0
+.@textrm T
+.@textrm h
+.@textrm e
+.@glue 3.65 plus 1.825 minus 1.21666
+.etc.
+
+[25]
+Underfull \hbox (badness 3568) in paragraph at lines 1362--1363
+[]@textrm These @texttt `defines[] @textrm will cor-re-spond to de-fines in the
+ board's top level RTL file
+
+@hbox(7.60416+2.12917)x433.62, glue set 3.29613
+.@hbox(0.0+0.0)x0.0
+.@textrm T
+.@textrm h
+.@textrm e
+.@textrm s
+.etc.
+
+
+Overfull \hbox (29.32039pt too wide) in paragraph at lines 1372--1373
+[]@textrm The rest are op-tional, de-pend-ing on what is de-fined in the board'
+s @texttt rtl/verilog/include/orpsoc-|
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@hbox(0.0+0.0)x0.0
+.@textrm T
+.@textrm h
+.@textrm e
+.@glue 3.65 plus 1.825 minus 1.21666
+.etc.
+
+
+Underfull \hbox (badness 2012) in paragraph at lines 1395--1396
+ []@textrm Instantiate the mod-ule in the ORP-SoC top level file, @texttt rtl/v
+erilog/orpsoc_
+
+@hbox(7.60416+2.43333)x433.62, glue set 2.72142
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@textrm I
+.@textrm n
+.@textrm s
+.etc.
+
+[26]
+Overfull \hbox (32.01567pt too wide) in paragraph at lines 1402--1403
+ []@textrm Attach ap-pro-pri-ate clocks and re-sets, mod-ify the board's @textt
+t rtl/verilog/clkgen/clkgen.v[]|
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@glue(@leftskip) 43.36243
+.@hbox(4.86667+0.0)x0.0, glue set - 12.70244fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@mathon
+..@textsy ^^O
+..@mathoff
+..@kern 7.22743
+.@textrm A
+.@kern-0.30418
+.@textrm t
+.etc.
+
+[27] Chapter 7 [28] [29] [30] [31]
+Underfull \hbox (badness 3568) in paragraph at lines 1735--1736
+[]@textrm These @texttt `defines[] @textrm will cor-re-spond to de-fines in the
+ board's top level RTL file
+
+@hbox(7.60416+2.12917)x433.62, glue set 3.29613
+.@hbox(0.0+0.0)x0.0
+.@textrm T
+.@textrm h
+.@textrm e
+.@textrm s
+.etc.
+
+[32]
+Overfull \hbox (29.32039pt too wide) in paragraph at lines 1745--1746
+[]@textrm The rest are op-tional, de-pend-ing on what is de-fined in the board'
+s @texttt rtl/verilog/include/orpsoc-|
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@hbox(0.0+0.0)x0.0
+.@textrm T
+.@textrm h
+.@textrm e
+.@glue 3.65 plus 1.825 minus 1.21666
+.etc.
+
+
+Underfull \hbox (badness 2012) in paragraph at lines 1768--1769
+ []@textrm Instantiate the mod-ule in the ORP-SoC top level file, @texttt rtl/v
+erilog/orpsoc_
+
+@hbox(7.60416+2.43333)x433.62, glue set 2.72142
+.@glue(@leftskip) 21.68121
+.@hbox(0.0+0.0)x0.0
+.@textrm I
+.@textrm n
+.@textrm s
+.etc.
+
+
+Overfull \hbox (32.01567pt too wide) in paragraph at lines 1775--1776
+ []@textrm Attach ap-pro-pri-ate clocks and re-sets, mod-ify the board's @textt
+t rtl/verilog/clkgen/clkgen.v[]|
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@glue(@leftskip) 43.36243
+.@hbox(4.86667+0.0)x0.0, glue set - 12.70244fil
+..@glue 0.0 plus 1.0fil minus 1.0fil
+..@mathon
+..@textsy ^^O
+..@mathoff
+..@kern 7.22743
+.@textrm A
+.@kern-0.30418
+.@textrm t
+.etc.
+
+[33]
+Overfull \hbox (73.14912pt too wide) in paragraph at lines 1801--1802
+[]@textrm See the USB de-bug-ger doc-u-men-ta-tion and schemat-ics on or-soc.se
+: [][]@texttt http://orsoc.se/usb-jtag-debugger/[][][] |
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@hbox(0.0+0.0)x0.0
+.@textrm S
+.@textrm e
+.@textrm e
+.@glue 3.65 plus 1.825 minus 1.21666
+.etc.
+
+Chapter 8 [34]
+Overfull \hbox (51.0679pt too wide) in paragraph at lines 1869--1870
+[]@textrm More in-for-matino can be found on the man-u-fac-turer's web-site: []
+[]@texttt http://www.digilentinc.com/atlys/[][][] |
+
+@hbox(7.60416+2.43333)x433.62, glue set - 1.0
+.@hbox(0.0+0.0)x0.0
+.@textrm M
+.@textrm o
+.@textrm r
+.@textrm e
+.etc.
+
+[35] [36] Chapter 9 [37] Chapter 10 [38] [39] Chapter 11 [40] [41] Chapter 12
+[42] (./fdl-1.2.texi [43] [44] [45] [46] [47] [48]) (Index) [49] (./orpsoc.cps)
+[50] ) 
+Here is how much of TeX's memory you used:
+ 2552 strings out of 497129
+ 40292 string characters out of 1207599
+ 88528 words of memory out of 3000000
+ 3442 multiletter control sequences out of 15000+50000
+ 32127 words of font info for 112 fonts, out of 3000000 for 9000
+ 51 hyphenation exceptions out of 8191
+ 12i,6n,17p,779b,710s stack positions out of 5000i,500n,10000p,200000b,50000s
+</usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr
+/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmcsc10.pfb></usr/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/
+fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texmf-texlive/fonts/type1
+/public/amsfonts/cm/cmmi9.pfb></usr/share/texmf-texlive/fonts/type1/public/amsf
+onts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr9
+.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsl10.pfb></usr/
+share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmsltt10.pfb></usr/share/tex
+mf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/
+fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/share/texmf-texlive/fonts/type1
+/public/amsfonts/cm/cmtt10.pfb></usr/share/texmf-texlive/fonts/type1/public/ams
+fonts/cm/cmtt9.pfb>
+Output written on orpsoc.pdf (56 pages, 431454 bytes).
+PDF statistics:
+ 1171 PDF objects out of 1200 (max. 8388607)
+ 203 named destinations out of 1000 (max. 500000)
+ 1213 words of extra memory for PDF output out of 10000 (max. 10000000)
+

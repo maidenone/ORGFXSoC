@@ -1,0 +1,171 @@
+			Versatile memory controller RTL
+
+Project URL: http://opencores.org/project,versatile_mem_ctrl
+
+Currently this is only configured and used as an SDRAM controller.
+
+Configure SDRAM part size:
+
+Uncomment one of the following defines in rtl/verilog/sdr_16_defines.v:
+
+`define MT48LC32M16   // 64MB part
+`define MT48LC16M16   // 32MB part
+`define MT48LC4M16    //  8MB part
+
+This will enable the appropriate column and row bank sizes.
+
+When one of these defines is changed, running "make all" in this path will
+regenerate it. Be warned that several tools and scripts are required to
+regenerate the memory controller module.
+
+Tools required to re-generate memory controller:
+
+subversion:
+	Presumably this is already installed.
+
+excel2csv:
+
+CentOS/RedHat:
+
+     I ran into some problems just trying to update Perl, and it turns out the 
+     ftp download program Perl uses is called 'ncftpget' which isn't on CentOS 
+     by default.
+
+     I followed this guide, 
+     http://www.question-defense.com/2010/01/25/install-ncftp-ncftpget-ncftpput-using-yum-on-centos-linux-server 
+     to install it with the following commands:
+
+     $ sudo rpm -Uvh http://download.fedora.redhat.com/pub/epel/5/i386/epel-release-5-4.noarch.rpm
+
+     $ yum list *NCFTP*
+
+     $ sudo yum install ncftp
+
+Ubuntu:
+
+     Under Ubuntu these packages are availble (if not already installed) in the
+     ncftp package in apt, installable with the following command:
+
+     $ sudo apt-get install ncftp
+
+
+Configure Perl's CPAN:
+
+     First tried to configure CPAN according to this: 
+     http://www.d3dw8.com/code/configuring_cpan.html
+
+
+     Then I launched CPAN and updated it (following that first guide):
+
+     $ sudo perl -MCPAN -e shel
+
+     cpan> o conf prerequisites_policy ask
+
+     cpan> o conf make_install_arg   UNINST=1
+
+     cpan> o conf commit
+
+     cpan> quit
+
+     $ sudo perl -MCPAN -e shell
+
+     cpan> o conf init
+
+     This will then spit out a bunch of questions - just press enter for them 
+     all (defaults are fine), but make sure no other programs are missing (it 
+     starts asking for gzip, tar, etc. this is when I spotted ncftpget was 
+     missing.)
+
+     (Sweden is country 28 when it asks, and then I put just '1' when it asked 
+     me to select the mirror URLs).
+
+     cpan> quit
+
+     Finally, we can update CPAN:
+
+     $ sudo perl -MCPAN -e shell
+
+     cpan> install Bundle::CPAN
+
+     <lots of stuff>
+
+     It then paused near this message:
+
+     ERRORS/WARNINGS FOUND IN PREREQUISITES.  You may wish to install the 
+     versions of the modules indicated above before proceeding with this 
+     installation
+
+       Shall I follow them and prepend them to the queue
+       of modules we are processing right now? [yes]
+
+     ... and I pressed enter (for yes.)
+
+     It then did it again, and I pressed enter for yes, again...
+
+     ... and another yes ...
+
+     ... and then something asking if we should exit a test (i just pressed 
+     enter) ...
+
+     (man this is taking forever)
+
+     ... finally back to the cpan> prompt...
+
+     To install the prerequisities for the excel2csv package I did the 
+     following:
+
+     cpan> install Getopt::Long
+
+     cpan> install Pod::Usage
+
+     cpan> install Spreadsheet::ParseExcel
+
+     ... this needed to install some other prerequisites ....
+
+     cpan> quit
+
+     CPAN mess finished!
+
+Now we can finally install excel2csv:
+
+    $ wget http://search.cpan.org/CPAN/authors/id/L/LE/LEOCHARRE/excel2csv-1.01.tar.gz
+    $ tar xzf excel2csv-1.01.tar.gz 
+    $ cd excel2csv-1.01
+    excel2csv-1.01$ perl Makefile.PL
+    excel2csv-1.01$ make
+    excel2csv-1.01$ sudo make install
+
+PHP CLI:
+
+    Some other part of the makefile requires the PHP command line interface 
+    (CLI) be installed.
+
+    On a 64-bit CentOS/RedHad this was done with:
+
+    $ sudo yum install php-cli.x86_64
+
+    On Ubuntu 9.10 this was done with:
+
+    $ sudo apt-get install php5-cli
+
+Perl-Verilog:
+
+    This Perl Verilog HDL preprocessor tool is required, also.
+
+    On a 64-bit CentOS/RedHad this was done with:
+
+    $ sudo yum install perl-Verilog-Perl.x86_64
+
+    On Ubuntu 9.10 this was done with:
+
+    $ sudo apt-get install libverilog-perl
+
+
+Once these tools are installed the versatile memory controller project can
+be compiled.
+
+The makefile and scripts here usually perform an automatic checkout and compile 
+of the design, however there have been modifications to the project's 
+(versatile_mem_ctrl) RTL that are yet to be re-contributed to the design, and 
+so we will disable automatic-checking out and building for now.
+

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- IMPORTANT: This is an internal file that has been generated
+     by the Xilinx ISE software.  Any direct editing or
+     changes made to this file may result in unpredictable
+     behavior or data corruption.  It is strongly advised that
+     users do not edit the contents of this file. -->
+<messages>
+<msg type="warning" file="NgdBuild" num="931" delta="old" >The value of SIM_DEVICE on instance &apos;<arg fmt="%s" index="1">xilinx_ddr2_0/xilinx_ddr2_if0/ddr2_mig/memc3_infrastructure_inst/u_pll_adv</arg>&apos; of type <arg fmt="%s" index="2">PLL_ADV</arg> has been changed from &apos;<arg fmt="%s" index="3">VIRTEX5</arg>&apos; to &apos;<arg fmt="%s" index="4">SPARTAN6</arg>&apos; to correct post-ngdbuild and timing simulation for this primitive.  In order for functional simulation to be correct, the value of SIM_DEVICE should be changed in this same manner in the source netlist or constraint file.
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">sys_clk_in</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_sys_clk_in</arg>&apos;, was traced into <arg fmt="%s" index="4">DCM_SP</arg> instance <arg fmt="%s" index="5">clkgen0/dcm0</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">DCM_SP</arg> output(s): 
+<arg fmt="%s" index="7">CLKFX180</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_clkgen0_dcm0_clkfx_prebufg = PERIOD &quot;clkgen0_dcm0_clkfx_prebufg&quot; TS_sys_clk_in * 2.666666667 PHASE 1.875 ns HIGH 50%&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">sys_clk_in</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_sys_clk_in</arg>&apos;, was traced into <arg fmt="%s" index="4">DCM_SP</arg> instance <arg fmt="%s" index="5">clkgen0/dcm0</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">DCM_SP</arg> output(s): 
+<arg fmt="%s" index="7">CLK90</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_clkgen0_dcm0_clk90_prebufg = PERIOD &quot;clkgen0_dcm0_clk90_prebufg&quot; TS_sys_clk_in PHASE 2.5 ns HIGH 50%&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">sys_clk_in</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_sys_clk_in</arg>&apos;, was traced into <arg fmt="%s" index="4">BUFIO2</arg> instance <arg fmt="%s" index="5">dvi_gen0/sysclk_div</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">BUFIO2</arg> output(s): 
+<arg fmt="%s" index="7">DIVCLK</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_dvi_gen0_clk50m = PERIOD &quot;dvi_gen0_clk50m&quot; TS_sys_clk_in / 2 HIGH 50%&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">SYS_CLK3</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_SYS_CLK3</arg>&apos;, was traced into <arg fmt="%s" index="4">PLL_ADV</arg> instance <arg fmt="%s" index="5">xilinx_ddr2_0/xilinx_ddr2_if0/ddr2_mig/memc3_infrastructure_inst/u_pll_adv</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">PLL_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLKOUT3</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_xilinx_ddr2_0_xilinx_ddr2_if0_ddr2_mig_memc3_infrastructure_inst_mcb_drp_clk_bufg_in = PERIOD &quot;xilinx_ddr2_0_xilinx_ddr2_if0_ddr2_mig_memc3_infrastructure_inst_mcb_drp_clk_bufg_in&quot; TS_S...&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">SYS_CLK3</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_SYS_CLK3</arg>&apos;, was traced into <arg fmt="%s" index="4">PLL_ADV</arg> instance <arg fmt="%s" index="5">xilinx_ddr2_0/xilinx_ddr2_if0/ddr2_mig/memc3_infrastructure_inst/u_pll_adv</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">PLL_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLKOUT1</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_xilinx_ddr2_0_xilinx_ddr2_if0_ddr2_mig_memc3_infrastructure_inst_clk_2x_180 = PERIOD &quot;xilinx_ddr2_0_xilinx_ddr2_if0_ddr2_mig_memc3_infrastructure_inst_clk_2x_180&quot; TS_SYS_CLK3 / 2 PHASE ...&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">SYS_CLK3</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_SYS_CLK3</arg>&apos;, was traced into <arg fmt="%s" index="4">PLL_ADV</arg> instance <arg fmt="%s" index="5">xilinx_ddr2_0/xilinx_ddr2_if0/ddr2_mig/memc3_infrastructure_inst/u_pll_adv</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">PLL_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLKOUT0</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_xilinx_ddr2_0_xilinx_ddr2_if0_ddr2_mig_memc3_infrastructure_inst_clk_2x_0 = PERIOD &quot;xilinx_ddr2_0_xilinx_ddr2_if0_ddr2_mig_memc3_infrastructure_inst_clk_2x_0&quot; TS_SYS_CLK3 / 2 HIGH 50%&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">SYS_CLK3</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_SYS_CLK3</arg>&apos;, was traced into <arg fmt="%s" index="4">PLL_ADV</arg> instance <arg fmt="%s" index="5">xilinx_ddr2_0/xilinx_ddr2_if0/ddr2_mig/memc3_infrastructure_inst/u_pll_adv</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">PLL_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLKOUT2</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_xilinx_ddr2_0_xilinx_ddr2_if0_ddr2_mig_memc3_infrastructure_inst_clk0_bufg_in = PERIOD &quot;xilinx_ddr2_0_xilinx_ddr2_if0_ddr2_mig_memc3_infrastructure_inst_clk0_bufg_in&quot; TS_SYS_CLK3 / 0.12...&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">clkgen0_dcm0_clkfx_prebufg</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_clkgen0_dcm0_clkfx_prebufg</arg>&apos;, was traced into <arg fmt="%s" index="4">PLL_ADV</arg> instance <arg fmt="%s" index="5">xilinx_ddr2_0/xilinx_ddr2_if0/ddr2_mig/memc3_infrastructure_inst/u_pll_adv</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">PLL_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLKOUT3</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_xilinx_ddr2_0_xilinx_ddr2_if0_ddr2_mig_memc3_infrastructure_inst_mcb_drp_clk_bufg_in_0 = PERIOD &quot;xilinx_ddr2_0_xilinx_ddr2_if0_ddr2_mig_memc3_infrastructure_inst_mcb_drp_clk_bufg_in_0&quot; ...&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">clkgen0_dcm0_clkfx_prebufg</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_clkgen0_dcm0_clkfx_prebufg</arg>&apos;, was traced into <arg fmt="%s" index="4">PLL_ADV</arg> instance <arg fmt="%s" index="5">xilinx_ddr2_0/xilinx_ddr2_if0/ddr2_mig/memc3_infrastructure_inst/u_pll_adv</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">PLL_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLKOUT1</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_xilinx_ddr2_0_xilinx_ddr2_if0_ddr2_mig_memc3_infrastructure_inst_clk_2x_180_0 = PERIOD &quot;xilinx_ddr2_0_xilinx_ddr2_if0_ddr2_mig_memc3_infrastructure_inst_clk_2x_180_0&quot; TS_clkgen0_dcm0_cl...&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">clkgen0_dcm0_clkfx_prebufg</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_clkgen0_dcm0_clkfx_prebufg</arg>&apos;, was traced into <arg fmt="%s" index="4">PLL_ADV</arg> instance <arg fmt="%s" index="5">xilinx_ddr2_0/xilinx_ddr2_if0/ddr2_mig/memc3_infrastructure_inst/u_pll_adv</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">PLL_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLKOUT0</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_xilinx_ddr2_0_xilinx_ddr2_if0_ddr2_mig_memc3_infrastructure_inst_clk_2x_0_0 = PERIOD &quot;xilinx_ddr2_0_xilinx_ddr2_if0_ddr2_mig_memc3_infrastructure_inst_clk_2x_0_0&quot; TS_clkgen0_dcm0_clkfx_...&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">clkgen0_dcm0_clkfx_prebufg</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_clkgen0_dcm0_clkfx_prebufg</arg>&apos;, was traced into <arg fmt="%s" index="4">PLL_ADV</arg> instance <arg fmt="%s" index="5">xilinx_ddr2_0/xilinx_ddr2_if0/ddr2_mig/memc3_infrastructure_inst/u_pll_adv</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">PLL_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLKOUT2</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_xilinx_ddr2_0_xilinx_ddr2_if0_ddr2_mig_memc3_infrastructure_inst_clk0_bufg_in_0 = PERIOD &quot;xilinx_ddr2_0_xilinx_ddr2_if0_ddr2_mig_memc3_infrastructure_inst_clk0_bufg_in_0&quot; TS_clkgen0_dcm...&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="new" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">clkgen0_dcm0_clk90_prebufg</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_clkgen0_dcm0_clk90_prebufg</arg>&apos;, was traced into <arg fmt="%s" index="4">PLL_ADV</arg> instance <arg fmt="%s" index="5">PLL_ADV</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">PLL_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLKOUT1</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_clkgen0_pll0_clk1_prebufg = PERIOD &quot;clkgen0_pll0_clk1_prebufg&quot; TS_clkgen0_dcm0_clk90_prebufg * 0.5 HIGH 50%&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">dvi_gen0_clk50m</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_dvi_gen0_clk50m</arg>&apos;, was traced into <arg fmt="%s" index="4">DCM_CLKGEN</arg> instance <arg fmt="%s" index="5">dvi_gen0/PCLK_GEN_INST</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">DCM_CLKGEN</arg> output(s): 
+<arg fmt="%s" index="7">CLKFX</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_dvi_gen0_clkfx = PERIOD &quot;dvi_gen0_clkfx&quot; TS_dvi_gen0_clk50m * 1.476190476 HIGH 50%&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">dvi_gen0_clkfx</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_dvi_gen0_clkfx</arg>&apos;, was traced into <arg fmt="%s" index="4">PLL_ADV</arg> instance <arg fmt="%s" index="5">PLL_ADV</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">PLL_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLKOUT1</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_dvi_gen0_pllclk1 = PERIOD &quot;dvi_gen0_pllclk1&quot; TS_dvi_gen0_clkfx HIGH 50%&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">dvi_gen0_clkfx</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_dvi_gen0_clkfx</arg>&apos;, was traced into <arg fmt="%s" index="4">PLL_ADV</arg> instance <arg fmt="%s" index="5">PLL_ADV</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">PLL_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLKOUT0</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_dvi_gen0_pllclk0 = PERIOD &quot;dvi_gen0_pllclk0&quot; TS_dvi_gen0_clkfx * 10 HIGH 50%&gt;</arg>
+</msg>
+
+<msg type="info" file="ConstraintSystem" num="178" delta="old" ><arg fmt="%s" index="1">TNM</arg> &apos;<arg fmt="%s" index="2">dvi_gen0_clkfx</arg>&apos;, used in period specification &apos;<arg fmt="%s" index="3">TS_dvi_gen0_clkfx</arg>&apos;, was traced into <arg fmt="%s" index="4">PLL_ADV</arg> instance <arg fmt="%s" index="5">PLL_ADV</arg>. The following new TNM groups and period specifications were generated at the <arg fmt="%s" index="6">PLL_ADV</arg> output(s): 
+<arg fmt="%s" index="7">CLKOUT2</arg>: <arg fmt="%s" index="8">&lt;TIMESPEC TS_dvi_gen0_pllclk2 = PERIOD &quot;dvi_gen0_pllclk2&quot; TS_dvi_gen0_clkfx * 2 HIGH 50%&gt;</arg>
+</msg>
+
+<msg type="info" file="NgdBuild" num="1222" delta="old" >Setting <arg fmt="%s" index="1">CLKIN_PERIOD</arg> attribute associated with <arg fmt="%s" index="2">DCM</arg> instance <arg fmt="%s" index="3">clkgen0/dcm0</arg> to <arg fmt="%s" index="4">10.000000</arg> ns based on the period specification (<arg fmt="%s" index="5">&lt;TIMESPEC TS_sys_clk_in = PERIOD &quot;sys_clk_in&quot; 100 MHz HIGH 50 %;&gt; [../bin/atlys.ucf(333)]</arg>).
+</msg>
+
+<msg type="warning" file="NgdBuild" num="1440" delta="old" >User specified non-default attribute value (<arg fmt="%s" index="1">3.75</arg>) was detected for the <arg fmt="%s" index="2">CLKIN1_PERIOD</arg> attribute on <arg fmt="%s" index="3">PLL</arg> &quot;<arg fmt="%s" index="4">xilinx_ddr2_0/xilinx_ddr2_if0/ddr2_mig/memc3_infrastructure_inst/u_pll_adv</arg>&quot;.  This does not match the PERIOD constraint value (<arg fmt="%s" index="5">266.666667 MHz.</arg>).  The uncertainty calculation will use the PERIOD constraint value.  This could result in incorrect uncertainty calculated for <arg fmt="%s" index="6">PLL</arg> output clocks.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="1440" delta="old" >User specified non-default attribute value (<arg fmt="%s" index="1">13</arg>) was detected for the <arg fmt="%s" index="2">CLKIN1_PERIOD</arg> attribute on <arg fmt="%s" index="3">PLL</arg> &quot;<arg fmt="%s" index="4">PLL_ADV</arg>&quot;.  This does not match the PERIOD constraint value (<arg fmt="%s" index="5">73.8095238 MHz.</arg>).  The uncertainty calculation will use the PERIOD constraint value.  This could result in incorrect uncertainty calculated for <arg fmt="%s" index="6">PLL</arg> output clocks.
+</msg>
+
+<msg type="warning" file="NgdBuild" num="452" delta="new" ><arg fmt="%s" index="1">logical</arg> net &apos;<arg fmt="%s" index="2">N1723</arg>&apos; has no driver
+</msg>
+
+<msg type="warning" file="NgdBuild" num="452" delta="new" ><arg fmt="%s" index="1">logical</arg> net &apos;<arg fmt="%s" index="2">N1725</arg>&apos; has no driver
+</msg>
+
+</messages>
+

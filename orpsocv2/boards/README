@@ -1,0 +1,8 @@
+			ORPSoC board builds
+
+This directory contains a path for each technology vendor the  board builds 
+target.
+
+Under each of those vendor paths are the specific board paths.
+
+See the main documentation in ORPSoC's root path doc/ for more information.

@@ -1,0 +1,85 @@
+                                Project software
+                                ================
+
+This directory contains software that is intended to be compiled and run on
+ORPSoC, and utilities to help format software images.
+
+apps
+
+Standalone programs and utilities designed to run on ORPSoC. Usually these
+should be run on a FPGA/ASIC ORPSoC target.
+
+board
+
+This path mainly contains information about the board, in the board.h header
+found in the board/include path. Typically each board port of ORPSoC will have
+their own board/include/board.h file to indicate the board's specific 
+configuration.
+
+bootrom
+
+This is some assembly which is compiled and converted into Verilog, and then
+synthesized into a Wishbone ROM module that the processor uses to boot. It is
+not really software to run on ORPSoC, rather it is software that ends up 
+embedded in ORPSoC. See the README in bootrom for more information.
+
+drivers
+
+Each module requiring a driver will have its own path under this directory. In
+the case of a CPU (currently only OR1200), it will also contain all the 
+necessary files to support creating of standalone executables (C runtime file,
+linker script, etc.) Under each specific driver's path should be an include/
+path which contains headers allowing use of the drivers. When using drivers
+in a board port that are modified versions of those included in the base sw 
+path, the board port's driver will be used over the one in the root sw path.
+
+lib
+
+Generic library softwares, and location of compiled liborpsoc.a library.
+
+Makefile.inc
+
+Main Makefile fragment included by all other makefiles when building things. The
+author is not the best at GNU make, so if anything is done a silly way, please
+feel free to fix it and commit this back. The better this file is, the easier
+this convoluted software setup will be to use.
+
+README
+
+This README.
+
+tests
+
+This path contains software intended to test particular modules of ORPSoC. Each
+is separated into tests intended to be run in simulation (sim/) and on a "board"
+or physical ORPSoC target.
+
+utils
+
+A path containing utilities, built for the host system, which will help in the
+generation of the programming files.
+
+
+				liborpsoc
+
+All of the drivers, and generic library functions are compiled into a library
+called liborpsoc.a which ends up in sw/lib. This is linked against by all 
+test software and standalone applications included here. This alleviates any
+need for the toolchain to contain a C library, although limits the capabilities
+of the library, however if anything special functions are needed, it's easy
+enough to add them to the existing functions in lib/lib-utils.c.
+
+       	      	      	  	Building
+
+The simulation makefiles should take care of this, but to test building 
+liborpsoc.a change into sw/lib and run "make liborpsoc.a".
+To test building an executable, go into one of the test directories and run
+"make test-name.elf" where "test-name" is the name of a valid test file.
+
+       	      	      	  	Cleaning
+
+To clean the software, run "make distclean" in sw/lib.
+
+
+
+Author: Julius Baxter, julius@opencores.org

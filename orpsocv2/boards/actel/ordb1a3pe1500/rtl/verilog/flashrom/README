@@ -1,0 +1,14 @@
+This is a Wishbone wrapper for the Actel user flash ROM (UFR) found on its 
+FPGAs. This flash ROM cannot be inferred and must be explicitly instantiated. 
+The instantiated module devboard_flashrom should be in the 
+backend/actel/rtl/verilog path, and was generated with Actel's smartgen.
+
+See the user flashrom handbook from Actel for further information on the UFR:
+http://www.actel.com/documents/LPD_FlashROM_HBs.pdf
+
+This document from Actel says that "the access time is 10 ns for a device 
+supporting commercial specifications", and the Wishbone interface asserts 
+wb_ack after 2 cycles, allowing even a 200MHz wishbone bus to access the module
+in time, however after PAR, timing reports a maximum access frequency of 14MHz,
+so do more testing before relying on this module.
+

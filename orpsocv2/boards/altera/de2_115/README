@@ -1,0 +1,60 @@
+DE2-115 port
+============
+
+Build:
+
+    Setup the OpenRisc toolchain: http://opencores.org/openrisc,gnu_toolchain. You'll only need or32-elf- for now.
+    git clone git://github.com/lgeek/orpsoc.git
+    cd orpsoc/boards/altera/de2_115/syn/quartus/run
+    ALTERA_PATH=/path/to/altera make all
+
+Program board:
+    ALTERA_PATH=/path/to/altera make pgm
+
+JTAG:
+    Go to http://opencores.org/download,adv_debug_sys and download it. You'll need to create an account. Accounts are approved manually. Or use my mirror on github:
+    git clone git@github.com:lgeek/adv_debug_sys.git
+    cd adv_debug_sys/Software/adv_jtag_bridge
+    Edit Makefile and change the BUILD_ENVIRONMENT setting if necessary.
+    make
+    wget ftp://ftp.altera.com/outgoing/download/bsdl/EP4CE115F29.bsd
+    ./adv_jtag_bridge -b ./ usbblaster
+
+Debug:
+    Start or32-elf-gdb. Inside gdb: target remote :9999. That's it.
+
+U-Boot:
+   Instructions to build it here: http://opencores.org/or1k/U-Boot. Use the de0_nano config.
+   Inside gdb:
+   load /path/to/u-boot-dir/u-boot
+   set $pc=0x100
+   continue
+   You should have the U-Boot shell running over the serial port @ 115200 baud
+
+Known issues:
+   JTAG seems to be a bit unstable. It is usable, but you'll sometimes have to reconnect the bridge.
+   The bootrom code which should just loop doesn't seem to work.
+
+Plans:
+   Add SPI controller connected to MMC SPI pins. Enable mmc_spi in u-boot.
+   Enable the second SDRAM chip.
+   Add Ethernet core(s)
+
+Credits:
+   All the hard work was done by the guys writing the actual cores at opencores.org and by Stefan who ported ORPSoC to DE0-Nano (http://git.openrisc.net/cgit.cgi/stefan/u-boot/) and has been most helpful giving me pointers on how to get this port working. All I've done was to change a couple of settings and write these instructions.
+
+
+
+
+	      OpenRISC Reference Platform System on Chip (ORPSoC)
+	      ===================================================
+
+
+* Documentation:
+
+The main documentation and usage guide for ORPSoC is buildable in the doc/ 
+path with the following:
+
+	./configure
+	make pdf
+
